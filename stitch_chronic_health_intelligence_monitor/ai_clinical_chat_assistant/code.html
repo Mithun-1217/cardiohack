@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Public+Sans:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"surface-dim": "#d9d9e2", "surface-tint": "#1d59c1", "on-tertiary-fixed": "#360f00", "tertiary-container": "#993900", "surface-container-highest": "#e1e2eb", "on-surface-variant": "#434653", "on-error": "#ffffff", "on-background": "#191b22", "on-tertiary-fixed-variant": "#7d2d00", tertiary: "#732900", "primary-container": "#0f52ba", "on-tertiary-container": "#ffc0a7", "on-surface": "#191b22", outline: "#737784", "tertiary-fixed-dim": "#ffb596", "surface-bright": "#faf8ff", "inverse-primary": "#b0c6ff", "surface-container": "#ededf6", "on-primary-fixed-variant": "#00419c", "surface-container-high": "#e7e7f1", "on-tertiary": "#ffffff", "inverse-surface": "#2e3037", "primary-fixed-dim": "#b0c6ff", "on-primary": "#ffffff", "on-error-container": "#93000a", "secondary-fixed-dim": "#b7c8e1", "surface-container-low": "#f3f3fc", "on-secondary-fixed": "#0b1c30", "on-primary-fixed": "#001945", "primary-fixed": "#d9e2ff", "outline-variant": "#c3c6d5", "on-secondary-container": "#54647a", error: "#ba1a1a", "tertiary-fixed": "#ffdbcd", "surface-container-lowest": "#ffffff", "secondary-fixed": "#d3e4fe", "on-primary-container": "#bcceff", background: "#faf8ff", "surface-variant": "#e1e2eb", primary: "#003c90", secondary: "#505f76", "on-secondary": "#ffffff", "inverse-on-surface": "#f0f0f9", "error-container": "#ffdad6", surface: "#faf8ff", "on-secondary-fixed-variant": "#38485d", "secondary-container": "#d0e1fb"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {gutter: "20px", "base-unit": "4px", md: "16px", xs: "4px", lg: "24px", sm: "8px", "container-max": "1440px", xl: "48px"}, fontFamily: {"data-mono": ["Inter"], "body-lg": ["Inter"], "body-md": ["Inter"], "label-caps": ["Public Sans"], "headline-md": ["Manrope"], "headline-lg": ["Manrope"], headline: ["Manrope"], display: ["Manrope"], body: ["Inter"], label: ["Public Sans"]}, fontSize: {"data-mono": ["14px", {lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "500"}], "body-lg": ["16px", {lineHeight: "24px", fontWeight: "400"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}], "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "600"}], "headline-lg": ["30px", {lineHeight: "38px", fontWeight: "700"}]}}}};</script>
+<style>
+        .chat-scroll-container::-webkit-scrollbar { width: 6px; }
+        .chat-scroll-container::-webkit-scrollbar-track { background: transparent; }
+        .chat-scroll-container::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- SideNavBar -->
+<aside class="flex flex-col h-full fixed left-0 top-0 z-40 bg-white dark:bg-slate-900 h-screen w-64 border-r border-slate-200 dark:border-slate-800 font-manrope text-sm font-medium">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+</div>
+<h1 class="text-lg font-extrabold tracking-tight text-blue-900 dark:text-blue-50">MedCore Monitor</h1>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span>Patient Dashboard</span>
+</a>
+<!-- Active Tab: AI Clinical Chat -->
+<a class="flex items-center gap-3 border-l-4 border-blue-700 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 py-3 px-4 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-semibold">AI Clinical Chat</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">folder_shared</span>
+<span>Health Records</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>Recent Conversations</span>
+</a>
+</div>
+<button class="mt-8 w-full bg-primary text-white py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-semibold hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined">add</span>
+                New Chat
+            </button>
+</div>
+<div class="mt-auto p-6 space-y-1">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<div class="pt-4 flex items-center gap-3">
+<img alt="Dr. Specialist" class="w-10 h-10 rounded-full border border-slate-200" data-alt="A professional close-up portrait of a medical doctor in a clinical setting, wearing a white coat and a stethoscope. The background is a blurred hospital environment with soft blue and white lighting, maintaining a calm and authoritative healthcare aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPn5Zs2d0h3Gjm1Y0EusMfgs7f2maa2taLWYLyy5P6w7T8vG9nTQrdinPtuaVHfjw3MSTKF_p-UBoq8cB8LCjsl5J0d2waZGEWkqyCLr0SZHAn42NM7TiWm7utN5Yd0lY7fCfVbC9aQH4Sdee3OyWD59-KXGeegM7myCzl-rJYOkUy1760yGsWwZhMJgrXCM_DJABfcsvPQJIo2ZIK5vf8jfNueKO_cefqEF8SyRFDja_2mVew76pA4lh8PeQ9wGw_HZ39OzSkjXua"/>
+<div>
+<p class="text-xs font-bold text-slate-900">Dr. Specialist</p>
+<p class="text-[10px] text-slate-500">Chief Resident</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen flex flex-col bg-slate-50">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between h-16 px-6 sticky top-0 z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 font-manrope text-sm">
+<div class="flex items-center gap-4">
+<h2 class="text-base font-bold text-slate-900 dark:text-slate-50">AI Clinical Assistant</h2>
+<div class="flex items-center gap-2 bg-blue-100 px-3 py-1 rounded-full">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+</span>
+<span class="text-xs font-semibold text-blue-700">Analyzing Eleanor Vance's Data</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-slate-500 hover:text-blue-600 transition-all font-medium">Insights</button>
+<button class="text-slate-500 hover:text-blue-600 transition-all font-medium">Protocol Library</button>
+</div>
+<div class="h-6 w-[1px] bg-slate-200"></div>
+<div class="flex items-center gap-3">
+<button class="bg-red-50 text-red-600 px-4 py-1.5 rounded text-xs font-bold border border-red-100 hover:bg-red-100 transition-all">Emergency Protocol</button>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-slate-600">notifications</span>
+</div>
+</div>
+</header>
+<!-- Chat History Area -->
+<section class="flex-1 overflow-y-auto p-8 chat-scroll-container">
+<div class="max-w-4xl mx-auto space-y-8">
+<!-- User Message 1 -->
+<div class="flex justify-end">
+<div class="flex flex-col items-end gap-2 max-w-[80%]">
+<div class="bg-primary text-white p-4 rounded-xl rounded-tr-none shadow-sm">
+<p class="font-body-md">Why is my BP high today?</p>
+</div>
+<span class="text-[10px] text-slate-400 font-data-mono">10:42 AM</span>
+</div>
+</div>
+<!-- AI Response 1 -->
+<div class="flex justify-start">
+<div class="flex gap-4 max-w-[85%]">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="bg-white border border-slate-200 p-5 rounded-xl rounded-tl-none shadow-sm">
+<p class="font-body-md text-slate-800 mb-3">Looking at your recent data, Eleanor, your <span class="font-bold text-blue-700">Systolic BP peaked at 142 mmHg</span> this morning. This correlates with a <span class="font-bold">15% drop in overnight sleep duration</span> and a <span class="text-error font-bold">missed dose of Lisinopril</span> yesterday at 8:00 PM.</p>
+<div class="bg-blue-50/50 rounded-lg p-3 border border-blue-100/50 mb-3">
+<p class="text-sm font-medium text-blue-900">Would you like to log your morning dose now?</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary text-white text-xs px-4 py-2 rounded-lg font-bold hover:bg-primary/90 transition-all">Log 10mg Lisinopril</button>
+<button class="bg-white border border-slate-200 text-slate-600 text-xs px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition-all">Remind me later</button>
+</div>
+</div>
+<span class="text-[10px] text-slate-400 font-data-mono">10:43 AM • AI Analysis</span>
+</div>
+</div>
+</div>
+<!-- User Message 2 -->
+<div class="flex justify-end">
+<div class="flex flex-col items-end gap-2 max-w-[80%]">
+<div class="bg-primary text-white p-4 rounded-xl rounded-tr-none shadow-sm">
+<p class="font-body-md">Am I improving this week?</p>
+</div>
+<span class="text-[10px] text-slate-400 font-data-mono">10:45 AM</span>
+</div>
+</div>
+<!-- AI Response 2 -->
+<div class="flex justify-start">
+<div class="flex gap-4 max-w-[85%]">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="bg-white border border-slate-200 p-5 rounded-xl rounded-tl-none shadow-sm">
+<p class="font-body-md text-slate-800 mb-3">Yes, overall your <span class="font-bold text-blue-700">resting heart rate has stabilized</span> at an average of <span class="font-bold">72 BPM</span>, which is a <span class="text-green-600 font-bold">5% improvement</span> from last week. However, we should monitor the BP fluctuations.</p>
+<div class="grid grid-cols-2 gap-3 mt-4">
+<div class="border border-slate-100 rounded-lg p-3 bg-slate-50/50">
+<p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-1">Resting Heart Rate</p>
+<div class="flex items-end gap-2">
+<span class="text-xl font-bold text-slate-900">72</span>
+<span class="text-xs text-slate-500 mb-1">BPM</span>
+<span class="text-[10px] text-green-600 font-bold bg-green-50 px-1 rounded mb-1 ml-auto">▼ 5%</span>
+</div>
+</div>
+<div class="border border-slate-100 rounded-lg p-3 bg-slate-50/50">
+<p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-1">Sleep Quality</p>
+<div class="flex items-end gap-2">
+<span class="text-xl font-bold text-slate-900">82%</span>
+<span class="text-[10px] text-blue-600 font-bold bg-blue-50 px-1 rounded mb-1 ml-auto">Stable</span>
+</div>
+</div>
+</div>
+</div>
+<span class="text-[10px] text-slate-400 font-data-mono">10:46 AM • AI Analysis</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Input Section -->
+<footer class="p-6 bg-white border-t border-slate-200">
+<div class="max-w-4xl mx-auto space-y-4">
+<!-- Quick Action Chips -->
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-blue-100 bg-blue-50 text-blue-700 text-xs font-bold hover:bg-blue-100 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">medication</span>
+                        Review Medication
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-600 text-xs font-bold hover:bg-slate-50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">equalizer</span>
+                        Summary of Week
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-600 text-xs font-bold hover:bg-slate-50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">emergency_home</span>
+                        Help with Symptoms
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-600 text-xs font-bold hover:bg-slate-50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                        New Parameter
+                    </button>
+</div>
+<!-- Main Input Bar -->
+<div class="relative flex items-center gap-3 bg-slate-100 rounded-xl p-2 border border-slate-200 focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-100 transition-all">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md text-slate-900 placeholder:text-slate-400 py-3" placeholder="Type clinical query or patient concern..." type="text"/>
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="bg-primary text-white p-3 rounded-lg shadow-md hover:bg-primary/90 transition-transform active:scale-95">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<p class="text-[10px] text-center text-slate-400 font-medium">
+                    AI can make mistakes. Please verify clinical data before making treatment decisions.
+                </p>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB Suppression: Hide FAB on detailed chat screens as per design rules -->
+</body></html>

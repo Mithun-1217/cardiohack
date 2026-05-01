@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Appointments - Clinical Precision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&amp;family=Inter:wght@400;500&amp;family=Public+Sans:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#0b1c30",
+                        "inverse-on-surface": "#f0f0f9",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-error-container": "#93000a",
+                        "outline": "#737784",
+                        "surface-container-highest": "#e1e2eb",
+                        "primary": "#003c90",
+                        "tertiary-container": "#993900",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary": "#ffffff",
+                        "background": "#faf8ff",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-low": "#f3f3fc",
+                        "primary-container": "#0f52ba",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#434653",
+                        "secondary-container": "#d0e1fb",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface": "#faf8ff",
+                        "on-primary-container": "#bcceff",
+                        "on-primary-fixed": "#001945",
+                        "surface-container": "#ededf6",
+                        "inverse-primary": "#b0c6ff",
+                        "surface-dim": "#d9d9e2",
+                        "surface-tint": "#1d59c1",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "inverse-surface": "#2e3037",
+                        "on-background": "#191b22",
+                        "on-surface": "#191b22",
+                        "outline-variant": "#c3c6d5",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-fixed": "#ffdbcd",
+                        "secondary": "#505f76",
+                        "on-tertiary-container": "#ffc0a7",
+                        "on-primary-fixed-variant": "#00419c",
+                        "surface-container-high": "#e7e7f1",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "error": "#ba1a1a",
+                        "tertiary": "#732900",
+                        "surface-bright": "#faf8ff",
+                        "surface-variant": "#e1e2eb",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#360f00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base-unit": "4px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "48px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "display": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Public Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf8ff; color: #191b22; }
+        h1, h2, h3, h4, h5, h6, .font-headline { font-family: 'Manrope', sans-serif; }
+        .font-label { font-family: 'Public Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background h-screen w-full overflow-hidden flex flex-col items-center justify-center p-md">
+<!-- Windows Container -->
+<div class="w-full max-w-[1440px] h-[921px] bg-surface-container-lowest rounded-xl shadow-2xl flex flex-col overflow-hidden border border-surface-container-highest relative">
+<!-- Windows Title Bar -->
+<div class="h-8 bg-surface-container-highest flex items-center justify-between px-md flex-shrink-0 cursor-default select-none border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">local_hospital</span>
+<span class="font-label text-[12px] font-semibold tracking-wider text-on-surface-variant uppercase">MedCore Monitor</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="w-3 h-3 rounded-full bg-outline-variant hover:bg-outline transition-colors focus:outline-none"></button>
+<button class="w-3 h-3 rounded-full bg-outline-variant hover:bg-outline transition-colors focus:outline-none"></button>
+<button class="w-3 h-3 rounded-full bg-error hover:bg-on-error-container transition-colors focus:outline-none"></button>
+</div>
+</div>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- SideNavBar -->
+<nav class="docked left-0 h-full w-64 border-r border-r border-[#e1e2eb] dark:border-[#434653] bg-[#ffffff] dark:bg-[#191b22] flex flex-col z-30 flex-shrink-0">
+<div class="h-16 flex items-center px-6 border-b border-surface-container-highest">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[20px]">local_hospital</span>
+</div>
+<div>
+<h2 class="font-['Manrope'] font-bold text-[#003c90] text-[16px] leading-none">Precision Med</h2>
+<p class="font-['Inter'] text-[12px] text-on-surface-variant mt-1 leading-none">North Wing Unit</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-4 flex flex-col gap-1">
+<a class="text-[#434653] dark:text-[#c3c6d5] py-3 px-4 flex items-center gap-3 font-['Inter'] text-[14px] font-medium hover:bg-[#f3f3fc] dark:hover:bg-[#2e3037] transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+                        Dashboard
+                    </a>
+<a class="text-[#434653] dark:text-[#c3c6d5] py-3 px-4 flex items-center gap-3 font-['Inter'] text-[14px] font-medium hover:bg-[#f3f3fc] dark:hover:bg-[#2e3037] transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">person</span>
+                        Patients
+                    </a>
+<a class="border-l-4 border-[#003c90] bg-[#f3f3fc] dark:bg-[#2e3037] text-[#003c90] dark:text-[#b0c6ff] py-3 px-4 flex items-center gap-3 font-['Inter'] text-[14px] font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                        Appointments
+                    </a>
+<a class="text-[#434653] dark:text-[#c3c6d5] py-3 px-4 flex items-center gap-3 font-['Inter'] text-[14px] font-medium hover:bg-[#f3f3fc] dark:hover:bg-[#2e3037] transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+                        Vitals
+                    </a>
+<a class="text-[#434653] dark:text-[#c3c6d5] py-3 px-4 flex items-center gap-3 font-['Inter'] text-[14px] font-medium hover:bg-[#f3f3fc] dark:hover:bg-[#2e3037] transition-all mt-auto" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                        Settings
+                    </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex flex-col flex-1 overflow-hidden bg-background">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-6 h-16 z-40 bg-[#faf8ff] dark:bg-[#191b22] border-b border-[#e1e2eb] dark:border-[#434653] flex-shrink-0">
+<div class="flex items-center">
+<h1 class="font-['Manrope'] text-lg font-bold text-[#003c90] dark:text-[#b0c6ff]">Clinical Precision</h1>
+</div>
+<div class="flex-1 max-w-md mx-6">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-lg bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary font-['Inter'] text-sm antialiased outline-none transition-all text-on-surface placeholder:text-on-surface-variant" placeholder="Search patients, appointments..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 text-[#434653] dark:text-[#c3c6d5]">
+<button class="w-10 h-10 rounded-full hover:bg-[#ededf6] dark:hover:bg-[#2e3037] transition-colors flex items-center justify-center relative focus:outline-none focus:ring-2 focus:ring-[#0f52ba] focus:ring-inset">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="w-10 h-10 rounded-full hover:bg-[#ededf6] dark:hover:bg-[#2e3037] transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#0f52ba] focus:ring-inset">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden ml-2 cursor-pointer border border-surface-container-highest">
+<img alt="Medical Practitioner Profile" class="w-full h-full object-cover" data-alt="A professional medical practitioner in a clinical setting, soft natural lighting, modern healthcare environment, trustworthy and calm expression, highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSSHG72dAn4rQKnv6iJcG0suASaJHWr8fB3gJa-qJKd10HCC16ty86kYli2B1jTeTFJIiCK8138BspNyaIII9XHlpbQoGXypvO8CnKyrwG8Rn72Q8N32r1CtK-ou01ZHfxwn8kDZvRRQFMRYkUKkVqCwfIQG6cwQQKfbCkFhlAyL4MR1G4xKZRuKxOuQNpW-Gr2dVALjZLeUBS3EBhsr0dR1zUuasKyP93dlkv8dmL2cqBrlXPZijLsd8WWCwxOrrlKWQlPGx14eRc"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-hidden p-lg flex gap-lg">
+<!-- Left: Calendar Canvas -->
+<div class="flex-1 flex flex-col bg-surface-container-lowest border border-surface-container-highest rounded-xl shadow-sm overflow-hidden h-full">
+<!-- Calendar Header -->
+<div class="p-md border-b border-surface-container-highest flex justify-between items-center bg-surface-bright flex-shrink-0">
+<div>
+<h2 class="font-headline text-[24px] font-semibold text-on-surface leading-tight">October 2023</h2>
+<p class="font-body text-sm text-on-surface-variant mt-1">Dr. S. Reynolds Schedule</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 border border-outline-variant rounded-lg text-sm font-medium text-on-surface hover:bg-surface-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="px-4 py-1.5 border border-outline-variant rounded-lg text-sm font-medium text-on-surface hover:bg-surface-container transition-colors">Today</button>
+<button class="px-3 py-1.5 border border-outline-variant rounded-lg text-sm font-medium text-on-surface hover:bg-surface-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="flex-1 overflow-y-auto">
+<!-- Weekdays Header -->
+<div class="grid grid-cols-7 border-b border-surface-container-highest sticky top-0 bg-surface-container-lowest z-10">
+<div class="py-2 text-center font-label text-[12px] font-semibold text-on-surface-variant uppercase tracking-wider border-r border-surface-container-highest">Mon</div>
+<div class="py-2 text-center font-label text-[12px] font-semibold text-on-surface-variant uppercase tracking-wider border-r border-surface-container-highest">Tue</div>
+<div class="py-2 text-center font-label text-[12px] font-semibold text-on-surface-variant uppercase tracking-wider border-r border-surface-container-highest">Wed</div>
+<div class="py-2 text-center font-label text-[12px] font-semibold text-primary bg-primary-fixed uppercase tracking-wider border-r border-surface-container-highest">Thu</div>
+<div class="py-2 text-center font-label text-[12px] font-semibold text-on-surface-variant uppercase tracking-wider border-r border-surface-container-highest">Fri</div>
+<div class="py-2 text-center font-label text-[12px] font-semibold text-on-surface-variant uppercase tracking-wider border-r border-surface-container-highest">Sat</div>
+<div class="py-2 text-center font-label text-[12px] font-semibold text-on-surface-variant uppercase tracking-wider">Sun</div>
+</div>
+<!-- Calendar Days (Sample Week) -->
+<div class="grid grid-cols-7 h-[800px] bg-surface-container-highest gap-[1px]">
+<!-- Day Cells -->
+<div class="bg-surface-container-lowest p-2 flex flex-col gap-1">
+<span class="text-sm text-on-surface-variant self-end">16</span>
+<div class="bg-primary-container/10 border-l-2 border-primary p-1.5 rounded-sm text-xs cursor-pointer hover:bg-primary-container/20 transition-colors">
+<span class="font-medium text-primary block truncate">09:00 - Dr. Consult</span>
+<span class="text-on-surface-variant truncate">J. Doe</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-2 flex flex-col gap-1">
+<span class="text-sm text-on-surface-variant self-end">17</span>
+<div class="bg-[#f3e8ff] border-l-2 border-[#9333ea] p-1.5 rounded-sm text-xs cursor-pointer hover:bg-[#f3e8ff]/80 transition-colors">
+<span class="font-medium text-[#7e22ce] block truncate">10:30 - Therapy</span>
+<span class="text-on-surface-variant truncate">M. Smith</span>
+</div>
+<div class="bg-primary-container/10 border-l-2 border-primary p-1.5 rounded-sm text-xs cursor-pointer hover:bg-primary-container/20 transition-colors">
+<span class="font-medium text-primary block truncate">14:00 - Dr. Consult</span>
+<span class="text-on-surface-variant truncate">A. Johnson</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-2 flex flex-col gap-1">
+<span class="text-sm text-on-surface-variant self-end">18</span>
+<div class="bg-[#ccfbf1] border-l-2 border-[#0d9488] p-1.5 rounded-sm text-xs cursor-pointer hover:bg-[#ccfbf1]/80 transition-colors">
+<span class="font-medium text-[#0f766e] block truncate">08:15 - Lab Test</span>
+<span class="text-on-surface-variant truncate">R. Davis</span>
+</div>
+</div>
+<div class="bg-primary-fixed/30 p-2 flex flex-col gap-1 ring-1 ring-inset ring-primary">
+<span class="text-sm text-primary font-bold self-end w-6 h-6 flex items-center justify-center bg-primary text-on-primary rounded-full">19</span>
+<div class="bg-primary-container/10 border-l-2 border-primary p-1.5 rounded-sm text-xs cursor-pointer hover:bg-primary-container/20 transition-colors">
+<span class="font-medium text-primary block truncate">11:00 - Dr. Consult</span>
+<span class="text-on-surface-variant truncate">E. Wilson</span>
+</div>
+<div class="bg-[#f3e8ff] border-l-2 border-[#9333ea] p-1.5 rounded-sm text-xs cursor-pointer hover:bg-[#f3e8ff]/80 transition-colors">
+<span class="font-medium text-[#7e22ce] block truncate">15:30 - Therapy</span>
+<span class="text-on-surface-variant truncate">L. Brown</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-2 flex flex-col gap-1">
+<span class="text-sm text-on-surface-variant self-end">20</span>
+</div>
+<div class="bg-surface-container-low p-2 flex flex-col gap-1">
+<span class="text-sm text-outline self-end">21</span>
+</div>
+<div class="bg-surface-container-low p-2 flex flex-col gap-1">
+<span class="text-sm text-outline self-end">22</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Actions & Pending -->
+<aside class="w-80 flex flex-col gap-md flex-shrink-0 h-full overflow-y-auto">
+<!-- Quick Actions -->
+<div class="bg-surface-container-lowest border border-surface-container-highest rounded-xl p-md shadow-sm">
+<button class="w-full bg-primary hover:bg-on-primary-fixed-variant text-on-primary font-body text-sm font-medium py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                                Request New Appointment
+                            </button>
+</div>
+<!-- Pending Appointments -->
+<div class="bg-surface-container-lowest border border-surface-container-highest rounded-xl shadow-sm overflow-hidden flex-1 flex flex-col">
+<div class="p-md border-b border-surface-container-highest bg-surface-bright flex justify-between items-center">
+<h3 class="font-headline text-[16px] font-semibold text-on-surface">Pending Requests</h3>
+<span class="bg-error-container text-on-error-container text-xs font-bold px-2 py-0.5 rounded-full">2</span>
+</div>
+<div class="p-md flex flex-col gap-sm overflow-y-auto">
+<!-- Request 1 -->
+<div class="border border-surface-container-highest rounded-lg p-3 bg-surface hover:bg-surface-container-lowest transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-body text-sm font-semibold text-on-surface">Sarah Connor</p>
+<p class="font-body text-xs text-on-surface-variant">Dr. Consult - Initial</p>
+</div>
+<span class="text-xs font-medium text-primary bg-primary-fixed px-2 py-0.5 rounded-sm">Oct 24</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-on-surface-variant mb-3">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>09:30 AM</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-high hover:bg-surface-variant text-on-surface text-xs font-medium py-1.5 rounded-md transition-colors border border-surface-variant">Reschedule</button>
+<button class="flex-1 bg-primary-container text-on-primary-container hover:bg-primary text-xs font-medium py-1.5 rounded-md transition-colors hover:text-on-primary">Accept</button>
+</div>
+</div>
+<!-- Request 2 -->
+<div class="border border-surface-container-highest rounded-lg p-3 bg-surface hover:bg-surface-container-lowest transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-body text-sm font-semibold text-on-surface">Kyle Reese</p>
+<p class="font-body text-xs text-on-surface-variant">Lab Test - Blood Panel</p>
+</div>
+<span class="text-xs font-medium text-primary bg-primary-fixed px-2 py-0.5 rounded-sm">Oct 25</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-on-surface-variant mb-3">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>11:00 AM</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-high hover:bg-surface-variant text-on-surface text-xs font-medium py-1.5 rounded-md transition-colors border border-surface-variant">Reschedule</button>
+<button class="flex-1 bg-primary-container text-on-primary-container hover:bg-primary text-xs font-medium py-1.5 rounded-md transition-colors hover:text-on-primary">Accept</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Reminder Settings -->
+<div class="bg-surface-container-lowest border border-surface-container-highest rounded-xl p-md shadow-sm">
+<h3 class="font-headline text-[16px] font-semibold text-on-surface mb-3">Reminder Preferences</h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-2 text-sm text-on-surface font-medium">
+<span class="material-symbols-outlined text-[18px] text-outline">mail</span>
+                                        Email Notifications
+                                    </div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 border-primary appearance-none cursor-pointer transition-transform duration-200 ease-in-out translate-x-5" id="toggle-email" name="toggle" style="box-shadow: inset 0 0 0 10px #003c90;" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-primary cursor-pointer" for="toggle-email"></label>
+</div>
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-2 text-sm text-on-surface font-medium">
+<span class="material-symbols-outlined text-[18px] text-outline">sms</span>
+                                        SMS Alerts
+                                    </div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 border-surface-variant appearance-none cursor-pointer transition-transform duration-200 ease-in-out" id="toggle-sms" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-variant cursor-pointer" for="toggle-sms"></label>
+</div>
+</label>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</div>
+</div>
+</body></html>

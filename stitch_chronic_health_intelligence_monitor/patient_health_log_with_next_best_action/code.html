@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MedCore ChronicCare - Patient Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-primary": "#ffffff", "inverse-surface": "#2e3037", outline: "#737784", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#ffb596", background: "#faf8ff", surface: "#faf8ff", "surface-container": "#ededf6", "primary-fixed": "#d9e2ff", "on-primary-fixed-variant": "#00419c", "on-secondary-fixed": "#0b1c30", "inverse-primary": "#b0c6ff", "tertiary-fixed": "#ffdbcd", "surface-container-highest": "#e1e2eb", "secondary-fixed-dim": "#b7c8e1", "on-secondary-container": "#54647a", "on-tertiary-fixed-variant": "#7d2d00", "primary-fixed-dim": "#b0c6ff", "on-error-container": "#93000a", "secondary-fixed": "#d3e4fe", "on-secondary-fixed-variant": "#38485d", secondary: "#505f76", "secondary-container": "#d0e1fb", "on-surface-variant": "#434653", "inverse-on-surface": "#f0f0f9", "surface-dim": "#d9d9e2", "on-tertiary-container": "#ffc0a7", "surface-container-low": "#f3f3fc", "error-container": "#ffdad6", "on-primary-fixed": "#001945", "tertiary-container": "#993900", "surface-bright": "#faf8ff", "on-tertiary-fixed": "#360f00", "outline-variant": "#c3c6d5", "surface-container-lowest": "#ffffff", "on-tertiary": "#ffffff", "on-surface": "#191b22", primary: "#003c90", "surface-tint": "#1d59c1", "surface-variant": "#e1e2eb", "surface-container-high": "#e7e7f1", "on-background": "#191b22", "on-primary-container": "#bcceff", "on-error": "#ffffff", "primary-container": "#0f52ba", tertiary: "#732900", error: "#ba1a1a"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {lg: "24px", xl: "48px", xs: "4px", sm: "8px", "base-unit": "4px", "container-max": "1440px", md: "16px", gutter: "20px"}, fontFamily: {"body-lg": ["Inter"], "label-caps": ["Public Sans"], "headline-md": ["Manrope"], "body-md": ["Inter"], "headline-lg": ["Manrope"], "data-mono": ["Inter"], headline: ["Manrope"], display: ["Manrope"], body: ["Inter"], label: ["Public Sans"]}, fontSize: {"body-lg": ["16px", {lineHeight: "24px", fontWeight: "400"}], "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "600"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}], "headline-lg": ["30px", {lineHeight: "38px", fontWeight: "700"}], "data-mono": ["14px", {lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "500"}]}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { background-color: #faf8ff; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- Top Navigation Bar (Mobile Focused) -->
+<header class="flex items-center justify-between h-16 px-6 sticky top-0 z-50 bg-slate-50/80 backdrop-blur-md border-b border-slate-200">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+<img alt="Dr. Specialist" class="w-full h-full object-cover" data-alt="A professional and friendly headshot of a middle-aged female physician wearing a white clinical coat and a stethoscope. She is smiling warmly in a brightly lit, modern medical office with soft blue accents. The lighting is clean and high-key, conveying trust, clinical excellence, and personal care in a modern healthcare setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFnNcGX0Azst4wIEgG1ByTAI9Plgle66akkT_Zq-s6d4Y9ZcuwanZ6DVNnXLdxFJaRCv0oQ98QXnxWBorqKJKSmO-7nir202VE7xAOdRKUuFoUC981HPXZfBE6UUlhew0vUDw6bnHsz7fSzSTck1nk45U8JhULrI0LeWY5MYSZRpgLpN9dBd_vH9IK-ZtzibM85dH0IfScQV3z7ZYSgEwFskseYLMn74jcdJPeu6u1ZlsqfSn5E-B13Kh1I-WcRuh1D1Fb-hfJZHKu"/>
+</div>
+<div>
+<h1 class="font-headline-md text-sm leading-tight text-on-surface">MedCore ChronicCare</h1>
+<p class="text-xs text-secondary">Good morning, James</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="notifications">notifications</span>
+<button class="bg-primary text-on-primary px-3 py-1.5 rounded-xl text-xs font-bold">Help</button>
+</div>
+</header>
+<main class="p-6 pb-24 max-w-lg mx-auto">
+<!-- Motivational Streak Card -->
+<section class="mb-8">
+<div class="bg-primary-container rounded-xl p-5 flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-primary-container opacity-80 uppercase tracking-widest">Your Achievement</span>
+<h2 class="font-headline-md text-lg text-on-primary-container mt-1">7-day streak for meds!</h2>
+<p class="text-body-md text-sm text-on-primary-container opacity-90 mt-1">You're doing great, James. Keep it up!</p>
+</div>
+<div class="bg-white/20 p-3 rounded-full">
+<span class="material-symbols-outlined text-on-primary-container text-4xl" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+</section><section class="mb-10">
+<h3 class="font-headline-md text-lg text-on-surface mb-4">Recommended for You</h3>
+<div class="bg-secondary-container rounded-2xl p-5 shadow-sm border border-secondary/10 flex flex-col gap-4">
+<!-- Primary Action -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-on-secondary-container/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="directions_run">directions_run</span>
+</div>
+<div>
+<p class="font-headline-md text-base text-on-secondary-fixed">Take a 10-min walk now</p>
+<p class="text-xs text-on-secondary-container">Perfect time for a quick boost!</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-bold px-4 py-2 rounded-lg text-sm shadow-sm active:scale-95 transition-transform">
+        Log Walk
+      </button>
+</div>
+<!-- Divider -->
+<div class="h-px bg-on-secondary-container/10 w-full"></div>
+<!-- Secondary Nudge -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-on-secondary-container/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-secondary-fixed">Hydrate</p>
+<p class="text-xs text-on-secondary-container">Last intake: 5 hrs ago</p>
+</div>
+</div>
+<button class="flex items-center gap-1 text-primary font-bold text-sm bg-white/50 px-3 py-1.5 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-base" data-icon="add">add</span>
+        Log Water
+      </button>
+</div>
+<!-- Clinical Advisory -->
+<div class="bg-error-container/40 p-3 rounded-xl border border-error/10 flex gap-2">
+<span class="material-symbols-outlined text-error text-sm mt-0.5" data-icon="info">info</span>
+<p class="text-xs text-on-error-container leading-relaxed">
+<span class="font-bold">Clinical Note:</span> Consult doctor if BP remains high for 2 hrs.
+      </p>
+</div>
+</div>
+</section>
+<!-- Daily Tasks -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-lg text-on-surface">Daily Tasks</h3>
+<span class="text-xs font-label-caps text-primary">2 of 4 done</span>
+</div>
+<div class="space-y-3">
+<!-- Task 1: Log Blood Pressure -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
+<div class="w-12 h-12 bg-error-container rounded-xl flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="blood_pressure">blood_pressure</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-base">Log Blood Pressure</p>
+<p class="text-xs text-secondary">Due before 10:00 AM</p>
+</div>
+<button class="bg-primary text-on-primary font-bold px-4 py-2 rounded-lg text-sm">Start</button>
+</div>
+<!-- Task 2: Morning Meds (Completed) -->
+<div class="bg-slate-50 border border-slate-100 rounded-xl p-4 flex items-center gap-4 opacity-70">
+<div class="w-12 h-12 bg-secondary-container rounded-xl flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="pill" style="font-variation-settings: 'FILL' 1;">pill</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-base line-through">Take Morning Meds</p>
+<p class="text-xs text-secondary">Completed at 08:15 AM</p>
+</div>
+<span class="material-symbols-outlined text-on-primary-fixed-variant" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Task 3: Walk Tracking -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-xl flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="directions_walk">directions_walk</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-base">Evening Walk</p>
+<p class="text-xs text-secondary">Target: 15 minutes</p>
+</div>
+<button class="border border-outline-variant text-on-surface font-bold px-4 py-2 rounded-lg text-sm">Log</button>
+</div>
+</div>
+</section>
+<!-- Quick Log Vitals Section -->
+<section class="mb-10">
+<h3 class="font-headline-md text-lg text-on-surface mb-4">Log New Entry</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-white border border-slate-200 p-5 rounded-xl flex flex-col items-center gap-2 shadow-sm active:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="monitor_weight">monitor_weight</span>
+<span class="font-headline-md text-sm">Weight</span>
+</button>
+<button class="bg-white border border-slate-200 p-5 rounded-xl flex flex-col items-center gap-2 shadow-sm active:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="glucose">glucose</span>
+<span class="font-headline-md text-sm">Glucose</span>
+</button>
+<button class="bg-white border border-slate-200 p-5 rounded-xl flex flex-col items-center gap-2 shadow-sm active:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="thermostat">thermostat</span>
+<span class="font-headline-md text-sm">Temp</span>
+</button>
+<button class="bg-white border border-slate-200 p-5 rounded-xl flex flex-col items-center gap-2 shadow-sm active:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+<span class="font-headline-md text-sm">Mood</span>
+</button>
+</div>
+</section>
+<!-- Contact Provider Banner -->
+<section class="bg-on-secondary-fixed text-on-secondary p-6 rounded-2xl relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-headline-md text-lg">Need Assistance?</h4>
+<p class="text-sm opacity-80 mt-1 mb-4">Connect directly with Dr. Specialist's care team.</p>
+<div class="flex gap-2">
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-bold text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="call">call</span>
+                        Call Team
+                    </button>
+<button class="bg-white/10 text-on-secondary px-5 py-2.5 rounded-lg font-bold text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="chat">chat</span>
+                        Message
+                    </button>
+</div>
+</div>
+<!-- Aesthetic abstract shape -->
+<div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 flex items-center justify-around h-20 px-4 z-50 md:hidden">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-[10px] font-label-caps">Health Log</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="person_search">person_search</span>
+<span class="text-[10px] font-label-caps">Details</span>
+</a>
+<div class="relative -top-6">
+<button class="bg-primary text-on-primary w-14 h-14 rounded-full shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" data-icon="emergency_home">emergency_home</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="patient_list">patient_list</span>
+<span class="text-[10px] font-label-caps">Management</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="settings">settings</span>
+<span class="text-[10px] font-label-caps">Settings</span>
+</a>
+</nav>
+</body></html>

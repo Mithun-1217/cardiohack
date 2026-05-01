@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clinical Precision - Care Team Collaboration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@400;600;700;800&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#003c90",
+                        "surface-container": "#ededf6",
+                        "outline": "#737784",
+                        "on-secondary-container": "#54647a",
+                        "on-secondary": "#ffffff",
+                        "surface": "#faf8ff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-low": "#f3f3fc",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-surface-variant": "#434653",
+                        "primary-fixed": "#d9e2ff",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001945",
+                        "tertiary": "#732900",
+                        "on-primary-fixed-variant": "#00419c",
+                        "on-primary-container": "#bcceff",
+                        "background": "#faf8ff",
+                        "surface-dim": "#d9d9e2",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#505f76",
+                        "inverse-surface": "#2e3037",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "inverse-primary": "#b0c6ff",
+                        "tertiary-container": "#993900",
+                        "surface-container-highest": "#e1e2eb",
+                        "surface-container-high": "#e7e7f1",
+                        "secondary-container": "#d0e1fb",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ffc0a7",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-surface": "#191b22",
+                        "primary-container": "#0f52ba",
+                        "inverse-on-surface": "#f0f0f9",
+                        "outline-variant": "#c3c6d5",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e2eb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-tint": "#1d59c1",
+                        "on-background": "#191b22",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-bright": "#faf8ff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "display": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Public Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Ensure Material Symbols render correctly */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Windows 11 style scrollbar */
+        ::-webkit-scrollbar { width: 12px; height: 12px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: rgba(115, 119, 132, 0.2); border-radius: 10px; border: 3px solid transparent; background-clip: padding-box; }
+        ::-webkit-scrollbar-thumb:hover { background-color: rgba(115, 119, 132, 0.4); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body h-screen w-screen overflow-hidden flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Windows Title Bar -->
+<div class="h-8 w-full bg-surface-container-lowest flex items-center justify-between px-3 border-b border-surface-variant select-none z-50 shrink-0">
+<div class="flex items-center gap-2 text-xs text-on-surface-variant font-body">
+<span class="material-symbols-outlined text-[14px] text-primary">medical_services</span>
+<span>Clinical Precision</span>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 text-xs text-on-surface font-medium font-body">
+            Care Team Collaboration
+        </div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] hover:bg-surface-variant rounded-sm cursor-default pb-2">minimize</span>
+<span class="material-symbols-outlined text-[14px] hover:bg-surface-variant rounded-sm cursor-default">check_box_outline_blank</span>
+<span class="material-symbols-outlined text-[16px] hover:bg-error hover:text-on-error rounded-sm cursor-default">close</span>
+</div>
+</div>
+<!-- Main Application Frame -->
+<div class="flex-1 relative flex w-full h-[calc(100vh-2rem)] overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<!-- Appended top-8 to account for title bar in the fixed layout -->
+<nav class="bg-white dark:bg-slate-900 text-blue-800 dark:text-blue-400 docked full-height left-0 w-64 border-r border-slate-200 dark:border-slate-800 flat no shadows fixed left-0 top-8 h-[calc(100%-2rem)] z-40 flex flex-col py-6">
+<!-- Header -->
+<div class="px-6 mb-8 flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<img alt="Healthcare Provider Profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a clinical healthcare provider in a modern hospital setting. Bright, sterile, well-lit environment. The doctor wears a white coat and stethoscope. Clean, trustworthy, and authoritative clinical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN2lSRcV6BvbWAyxxPwTMcC8byaYR57bPxYRf4oP0S1m9gvfLM2erIBVZ9V7FpAiX1TVPhv-2qxoA3QZPFXYpBklxWMrTsgeCUp0CJdEXEUDt8l7taKkJLJRbZ08DkET9bZmVpVHW7khQCtEwpo3rAwCu6vgvi5FHHI6sMrz9rnTktwHjFlC0IFvS76ueOs3cc13TcMvOEgsVSyvWloy_bTr21Hg24r7EqYReas6wAvd3pPN9NH45B79KKlmHc_qssK7eR3h35l9Ye"/>
+<div>
+<h1 class="text-lg font-bold font-manrope text-blue-900 dark:text-blue-50 leading-tight">Clinical Precision</h1>
+<p class="text-xs text-slate-500 font-inter">Central Hospital Hub</p>
+</div>
+</div>
+</div>
+<!-- Tabs -->
+<ul class="flex-1 flex flex-col gap-1 px-3">
+<!-- Active Tab: Messaging -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded border-l-4 border-blue-700 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/30 text-blue-900 dark:text-blue-100 font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150 scale-[0.98]" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-public-sans text-[12px] uppercase tracking-wider">Messaging</span>
+</a>
+</li>
+<!-- Inactive Tabs -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">checklist</span>
+<span class="font-public-sans text-[12px] uppercase tracking-wider">Tasks</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="font-public-sans text-[12px] uppercase tracking-wider">Directory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+<span class="font-public-sans text-[12px] uppercase tracking-wider">Schedule</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment_ind</span>
+<span class="font-public-sans text-[12px] uppercase tracking-wider">Patient Records</span>
+</a>
+</li>
+</ul>
+<!-- CTA -->
+<div class="px-6 mt-auto">
+<button class="w-full bg-error text-on-error font-label text-xs uppercase tracking-wider py-2.5 px-4 rounded font-bold shadow-sm hover:bg-[#93000a] transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">emergency</span>
+                    Urgent Alert
+                </button>
+</div>
+</nav>
+<!-- Main Content Area (Right of Sidebar) -->
+<div class="flex-1 flex flex-col ml-64 h-full relative">
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-[#faf8ff] dark:bg-slate-950 text-blue-800 dark:text-blue-400 docked full-width border-b border-slate-200 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-8 py-4 h-[72px] shrink-0">
+<!-- Search Bar (Left) -->
+<div class="w-96 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface text-sm rounded py-2 pl-10 pr-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body placeholder:text-outline" placeholder="Search patients, messages, or tasks..." type="text"/>
+</div>
+<!-- Product Name (Center-ish, hidden or integrated based on layout, keeping it as requested) -->
+<div class="text-xl font-bold text-blue-900 dark:text-blue-50 font-manrope absolute left-1/2 -translate-x-1/2 hidden lg:block">
+                    Clinical Precision
+                </div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border border-surface"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">emergency_home</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<img alt="User avatar" class="w-8 h-8 rounded-full object-cover border border-outline-variant ml-2 cursor-pointer" data-alt="Same professional headshot of a clinical healthcare provider as the sidebar, functioning as the top right user profile avatar. Bright, clean, corporate medical style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1wUAu1wLGUm8dmYTg6uFNz9-X27Wb9YrPr5mm_BJ6HU5AX6QoF6Mo5K5K83t_bG5L8IDSdNhEVllCmK3oBGE4oXWFEZvMunPKxMY3Xi3dUcR5hp0TmA7zhbUZISlPyRtQSK8Pw4rzEdW_1Bhk-iG0RlF71BpX4LDcWZONQfe3kRkfIENkJnJUXQpRzmNKBKRZbZXfF-VP2-BryWe0s5ZWPZAMaiyGLMrQv3GTYNisirDk5CnXDB9ujiKoZeK_5KYSipfQBpMQB5V9"/>
+</div>
+</header>
+<!-- 3-Column Workspace -->
+<main class="flex-1 flex overflow-hidden bg-surface-container-low">
+<!-- Column 1: Inbox & Directory -->
+<aside class="w-80 border-r border-surface-variant bg-surface-container-lowest flex flex-col shrink-0">
+<div class="p-4 border-b border-surface-variant flex justify-between items-center">
+<h2 class="font-headline font-bold text-lg text-on-surface">Inbox</h2>
+<button class="text-primary hover:bg-primary-container hover:text-on-primary-container p-1.5 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+</div>
+<!-- Filters/Tabs -->
+<div class="flex px-4 pt-3 gap-4 border-b border-surface-variant text-sm font-label font-semibold text-on-surface-variant">
+<div class="pb-3 border-b-2 border-primary text-primary cursor-pointer">Active Threads</div>
+<div class="pb-3 border-b-2 border-transparent hover:text-on-surface cursor-pointer">Direct</div>
+<div class="pb-3 border-b-2 border-transparent hover:text-on-surface cursor-pointer">System</div>
+</div>
+<!-- Thread List -->
+<div class="flex-1 overflow-y-auto">
+<!-- Active Thread -->
+<div class="p-4 border-b border-surface-variant bg-primary-fixed/30 cursor-pointer relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-body font-semibold text-on-surface text-sm">ICU Trauma Team A</h3>
+<span class="text-xs text-primary font-medium">10:42 AM</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">
+<span class="font-semibold">Dr. Hayes:</span> Patient in bed 4 stabilized. Adjusting IV fluids to 100ml/hr. Please update chart.
+                            </p>
+</div>
+<!-- Unread Thread -->
+<div class="p-4 border-b border-surface-variant hover:bg-surface-container-low cursor-pointer transition-colors">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-body font-semibold text-on-surface text-sm flex items-center gap-2">
+                                    Cardiology Consults
+                                    <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+</h3>
+<span class="text-xs text-on-surface-variant font-medium">09:15 AM</span>
+</div>
+<p class="text-xs text-on-surface font-medium line-clamp-2 leading-relaxed">
+<span class="text-on-surface-variant font-normal">Nurse Davis:</span> Lab results for Mr. Smith are in. Troponin elevated.
+                            </p>
+</div>
+<!-- Read Thread -->
+<div class="p-4 border-b border-surface-variant hover:bg-surface-container-low cursor-pointer transition-colors">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-body font-semibold text-on-surface text-sm">Pharmacy Alerts</h3>
+<span class="text-xs text-on-surface-variant">Yesterday</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">
+                                Automated: Restock required for Pyxis machine on Floor 3 West.
+                            </p>
+</div>
+<!-- Read Thread -->
+<div class="p-4 border-b border-surface-variant hover:bg-surface-container-low cursor-pointer transition-colors">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-body font-semibold text-on-surface text-sm">Shift Handover - Night</h3>
+<span class="text-xs text-on-surface-variant">Yesterday</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">
+                                Dr. Lin: Summary attached. 3 admissions, 1 discharge pending morning labs.
+                            </p>
+</div>
+</div>
+</aside>
+<!-- Column 2: Active Conversation -->
+<section class="flex-1 flex flex-col bg-surface min-w-[400px]">
+<!-- Chat Header -->
+<div class="h-[72px] px-6 border-b border-surface-variant bg-surface-container-lowest flex items-center justify-between shrink-0">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<h2 class="font-headline font-bold text-lg text-on-surface leading-tight">ICU Trauma Team A</h2>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-[#10b981]"></span>
+                                    5 Active Participants
+                                </div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-outline hover:text-primary hover:bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined">video_camera_front</span>
+</button>
+<button class="p-2 text-outline hover:text-primary hover:bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 text-outline hover:text-primary hover:bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Chat History (Bento/Glassmorphism subtle hints instead of basic list where applicable) -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6 bg-surface">
+<!-- Date Divider -->
+<div class="flex items-center justify-center gap-4 my-2">
+<div class="h-px bg-surface-variant flex-1"></div>
+<span class="text-xs font-label text-outline uppercase tracking-wider">Today</span>
+<div class="h-px bg-surface-variant flex-1"></div>
+</div>
+<!-- System Message / Patient Link -->
+<div class="mx-auto bg-surface-container-low border border-outline-variant/50 rounded-lg p-3 text-sm flex items-center gap-3 w-max shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">assignment_add</span>
+<span class="text-on-surface-variant">Patient <a class="text-primary font-medium hover:underline" href="#">#8902 - John Doe</a> linked to thread.</span>
+</div>
+<!-- Received Message Block -->
+<div class="flex gap-4 max-w-[85%]">
+<img alt="Dr. Hayes Avatar" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1" data-alt="Headshot of a middle-aged male doctor with glasses, wearing a blue scrub top. Warm, professional lighting, conveying experience and calm in a clinical setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4_wwkaiq1StecsLhLHxMDp_buVVrOHS0M3c1E-Z-zrO38oZq_Vroe0xKTN9CQPXJyeSplKfnUxM-EDQ2645atjnZKuwon8nb9Z4ywnWK7emo1cVGF6-j48U3IlNyl_xUbSgbHCVjXPM9grBGiAhIeQpM8ReifSPlcwht-C5EEKeDDrA0vAZrb40CSFeY96BpkRQmjXBw2A7b8snaZnWkX_UK_8OkuEnbIFCIt0vtbq7MIefq8mmGMV3cGmL3y3Nxm3_15jmE-FuEL"/>
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="font-semibold text-sm text-on-surface">Dr. Hayes</span>
+<span class="text-xs text-outline">10:15 AM</span>
+</div>
+<div class="bg-surface-container border border-surface-variant p-3 rounded-lg rounded-tl-none text-sm text-on-surface shadow-sm">
+                                    Vitals are dropping for Bed 4. I need a respiratory therapist stat.
+                                </div>
+</div>
+</div>
+<!-- Sent Message Block -->
+<div class="flex gap-4 max-w-[85%] self-end flex-row-reverse">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 mt-1 text-xs font-bold">
+                                ME
+                            </div>
+<div class="flex flex-col gap-1 items-end">
+<div class="flex items-baseline gap-2 flex-row-reverse">
+<span class="font-semibold text-sm text-on-surface">You</span>
+<span class="text-xs text-outline">10:17 AM</span>
+</div>
+<div class="bg-primary text-on-primary p-3 rounded-lg rounded-tr-none text-sm shadow-sm">
+                                    On my way. ETA 2 minutes. Bringing intubation kit just in case.
+                                </div>
+</div>
+</div>
+<!-- Received Message Block with Attachment -->
+<div class="flex gap-4 max-w-[85%]">
+<img alt="Dr. Hayes Avatar" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1" data-alt="Same headshot of a middle-aged male doctor with glasses, wearing a blue scrub top." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyRJINfXvRDSz8GEOhNJowHsrbz8HGp5g_KwFAS8adC5D0y_Qj-YkCR8rPfnA7k-u-l6rv3H9FGr71lqxnnRWWlKRSmg-yGvaQR9p169Ez6nZXYD-JaXKM_XWVMrT1KNDFdvEFSYSL8lmBTPRzlh1_4jZHl0XsWGD20XC5jO19Wqdm2nImYqsOjrQpHlx22BbDmb_5KdKUpWOs_yHlk5kvXD8YlLThwHLAnsqGJlyrryDsXFTWLT5IYA-Acoo54fiC5a7prcgxEpH1"/>
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="font-semibold text-sm text-on-surface">Dr. Hayes</span>
+<span class="text-xs text-outline">10:42 AM</span>
+</div>
+<div class="bg-surface-container border border-surface-variant p-3 rounded-lg rounded-tl-none text-sm text-on-surface shadow-sm mb-2">
+                                    Patient in bed 4 stabilized. Adjusting IV fluids to 100ml/hr. Please update chart.
+                                </div>
+<!-- Attachment Glassmorphism Card -->
+<div class="bg-white/60 backdrop-blur-md border border-outline-variant p-3 rounded-lg flex items-center gap-3 cursor-pointer hover:bg-white transition-colors w-64 shadow-sm">
+<div class="bg-error-container text-on-error-container p-2 rounded">
+<span class="material-symbols-outlined text-[20px]">monitor_heart</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="text-sm font-semibold truncate text-on-surface">EKG_Strip_Post_Stab.pdf</div>
+<div class="text-xs text-outline">1.2 MB</div>
+</div>
+<span class="material-symbols-outlined text-outline">download</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-surface-container-lowest border-t border-surface-variant shrink-0">
+<div class="flex items-end gap-2 bg-surface-container-low border border-outline-variant rounded-lg p-2 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<button class="p-2 text-outline hover:text-primary rounded transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 resize-none text-sm text-on-surface py-2.5 max-h-32 min-h-[40px] font-body" placeholder="Type a message to ICU Trauma Team A..." rows="1" style="outline: none;"></textarea>
+<button class="p-2 text-outline hover:text-primary rounded transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+<button class="w-10 h-10 bg-primary text-on-primary rounded flex items-center justify-center hover:bg-[#003175] transition-colors shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Column 3: Shared Tasks List -->
+<aside class="w-[340px] border-l border-surface-variant bg-[#faf8ff] flex flex-col shrink-0">
+<!-- Task Header -->
+<div class="h-[72px] px-5 border-b border-surface-variant bg-surface-container-lowest flex items-center justify-between shrink-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">checklist</span>
+<h2 class="font-headline font-bold text-lg text-on-surface">Shared Tasks</h2>
+</div>
+<button class="text-primary hover:bg-primary-container hover:text-on-primary-container px-2 py-1 rounded text-sm font-medium transition-colors border border-transparent hover:border-primary-fixed">
+                            + New Task
+                        </button>
+</div>
+<!-- Task List Content -->
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
+<!-- High Priority Task Card -->
+<div class="bg-surface-container-lowest border border-[#ffdad6] rounded-lg p-3 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-start gap-3 pl-2">
+<input class="mt-1 w-4 h-4 text-primary border-outline-variant rounded focus:ring-primary" type="checkbox"/>
+<div class="flex-1">
+<h4 class="text-sm font-semibold text-on-surface leading-tight mb-1">Update Bed 4 Chart</h4>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-1.5 bg-error-container text-on-error-container px-2 py-0.5 rounded text-[10px] font-label uppercase font-bold tracking-wide">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                            Overdue (15m)
+                                        </div>
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-[10px] font-bold">
+                                            ME
+                                        </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Normal Task Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-3 shadow-sm hover:shadow transition-shadow">
+<div class="flex items-start gap-3">
+<input class="mt-1 w-4 h-4 text-primary border-outline-variant rounded focus:ring-primary" type="checkbox"/>
+<div class="flex-1">
+<h4 class="text-sm font-medium text-on-surface leading-tight mb-1">Review morning labs for Smith</h4>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-1.5 text-xs text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                                            Today, 1:00 PM
+                                        </div>
+<img alt="Nurse Davis Avatar" class="w-6 h-6 rounded-full object-cover border border-surface-variant" data-alt="Headshot of a female nurse wearing light green scrubs in a clinical hallway. Friendly but focused expression, soft hospital lighting in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKbDuQT5lk6x79-3fOh3sBdO-9QiYMaonyvDv3eHSgCOuVT9lzphsK3L_bnk0VYOMtaQhPl83kSW2DqM1SPq0RHyZd1CTQlev1HwbzUS8YFc6FikDQMBh5iYru24BLn3bnQWNhBS5lL34IySX7Dehx5m__9SgDTULfELUC_0BK5mb2gQ-fiuC6IETyQg_HtidGJjyikE_ZzS3EZhyJ9kYAs34z-Zy5UFbgecOmQtcwdIRmAKDtdjn98aOSOKN04nZgAsrvtnKF3V5W"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Completed Task Card (Muted) -->
+<div class="bg-surface-container-lowest/50 border border-outline-variant/30 rounded-lg p-3 opacity-75">
+<div class="flex items-start gap-3">
+<input checked="" class="mt-1 w-4 h-4 text-outline border-outline-variant rounded focus:ring-primary opacity-60" type="checkbox"/>
+<div class="flex-1">
+<h4 class="text-sm font-medium text-outline line-through leading-tight mb-1">Administer IV antibiotics</h4>
+<div class="flex items-center justify-between mt-2">
+<div class="text-[10px] font-label text-outline uppercase tracking-wide">
+                                            Done at 9:30 AM
+                                        </div>
+<img alt="Dr. Hayes Avatar" class="w-6 h-6 rounded-full object-cover grayscale opacity-80" data-alt="Same headshot of a middle-aged male doctor, but slightly muted to indicate task completion status." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRJc20lP8Q8HxQBlG4br2FrBk3f3L3Gj6BY3Ac3ASiH95HSgMkOAOqWtNfPpjhopXg9SUH3rWzhoxHaZB1izpH4-1k0ZlqTkekMRkvHjLF3z9w5WL1jEVc-ugV0BrvM9Gp6qbC5fDHHC3XXQwRtCu5OQx-5uI6BAbHITpxejfDrj1XUcgeK9JJbT6pUf7ouspJE55l1FqxR8evLrC0GNvCU-4S35ZijZpCGxrZPOnXb918X5Lgo5tFW4Pajk-Q8y_bTktBq8FHNyz8"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</div>
+</body></html>

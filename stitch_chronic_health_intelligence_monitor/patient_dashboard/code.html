@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MedCore Monitor | Patient Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-primary": "#ffffff", "inverse-surface": "#2e3037", outline: "#737784", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#ffb596", background: "#faf8ff", surface: "#faf8ff", "surface-container": "#ededf6", "primary-fixed": "#d9e2ff", "on-primary-fixed-variant": "#00419c", "on-secondary-fixed": "#0b1c30", "inverse-primary": "#b0c6ff", "tertiary-fixed": "#ffdbcd", "surface-container-highest": "#e1e2eb", "secondary-fixed-dim": "#b7c8e1", "on-secondary-container": "#54647a", "on-tertiary-fixed-variant": "#7d2d00", "primary-fixed-dim": "#b0c6ff", "on-error-container": "#93000a", "secondary-fixed": "#d3e4fe", "on-secondary-fixed-variant": "#38485d", secondary: "#505f76", "secondary-container": "#d0e1fb", "on-surface-variant": "#434653", "inverse-on-surface": "#f0f0f9", "surface-dim": "#d9d9e2", "on-tertiary-container": "#ffc0a7", "surface-container-low": "#f3f3fc", "error-container": "#ffdad6", "on-primary-fixed": "#001945", "tertiary-container": "#993900", "surface-bright": "#faf8ff", "on-tertiary-fixed": "#360f00", "outline-variant": "#c3c6d5", "surface-container-lowest": "#ffffff", "on-tertiary": "#ffffff", "on-surface": "#191b22", primary: "#003c90", "surface-tint": "#1d59c1", "surface-variant": "#e1e2eb", "surface-container-high": "#e7e7f1", "on-background": "#191b22", "on-primary-container": "#bcceff", "on-error": "#ffffff", "primary-container": "#0f52ba", tertiary: "#732900", error: "#ba1a1a"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {lg: "24px", xl: "48px", xs: "4px", sm: "8px", "base-unit": "4px", "container-max": "1440px", md: "16px", gutter: "20px"}, fontFamily: {"body-lg": ["Inter"], "label-caps": ["Public Sans"], "headline-md": ["Manrope"], "body-md": ["Inter"], "headline-lg": ["Manrope"], "data-mono": ["Inter"], headline: ["Manrope"], display: ["Manrope"], body: ["Inter"], label: ["Public Sans"]}, fontSize: {"body-lg": ["16px", {lineHeight: "24px", fontWeight: "400"}], "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "600"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}], "headline-lg": ["30px", {lineHeight: "38px", fontWeight: "700"}], "data-mono": ["14px", {lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "500"}]}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8fafc;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface bg-background">
+<!-- SideNavBar -->
+<aside class="flex flex-col h-full fixed left-0 top-0 z-40 bg-white dark:bg-slate-900 h-screen w-64 border-r border-slate-200 dark:border-slate-800 shadow-none font-manrope text-sm font-medium">
+<div class="p-6">
+<h1 class="text-lg font-extrabold tracking-tight text-blue-900 dark:text-blue-50">MedCore Monitor</h1>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest mt-1">Clinical Command Center</p>
+</div>
+<nav class="flex-1 px-0 mt-4">
+<!-- Patient Dashboard: Active -->
+<a class="flex items-center border-l-4 border-blue-700 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 py-3 px-4 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">grid_view</span>
+                Patient Dashboard
+            </a>
+<!-- Patient Detail -->
+<a class="flex items-center text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">person_search</span>
+                Patient Detail
+            </a>
+<!-- Intervention Management -->
+<a class="flex items-center text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">emergency_home</span>
+                Intervention Management
+            </a>
+<!-- Health Log -->
+<a class="flex items-center text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">patient_list</span>
+                Health Log
+            </a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full bg-primary text-on-primary py-2.5 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Intervention
+            </button>
+</div>
+<div class="px-0 py-4">
+<a class="flex items-center text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">help_outline</span>
+                Support
+            </a>
+<a class="flex items-center text-slate-600 dark:text-slate-400 py-3 px-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+            </a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between h-16 px-6 sticky top-0 z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm font-manrope text-sm">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-xs focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Search patients by name, ID, or condition..." type="text"/>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-500 hover:text-blue-600 transition-all cursor-pointer" href="#">Alert History</a>
+<a class="text-slate-500 hover:text-blue-600 transition-all cursor-pointer" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 border border-blue-700 text-blue-700 font-semibold rounded hover:bg-blue-50 transition-colors text-xs">System Status</button>
+<button class="px-4 py-2 bg-error text-white font-semibold rounded hover:bg-red-700 transition-colors text-xs">Emergency Protocol</button>
+<div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer">notifications</span>
+<img alt="Dr. Specialist" class="h-8 w-8 rounded-full border border-slate-200 object-cover" data-alt="A professional medical headshot of a middle-aged male physician with a kind expression, wearing a crisp white laboratory coat over a blue button-down shirt. The background is a brightly lit, soft-focus clinical office environment with clean, cool-toned lighting reflecting a modern healthcare setting. The composition is sharp and centered, emphasizing trust and authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA35NBLru2v2IzTDNS745RiOsDf67HS3xNT8jYVr8fCGW1l8okd9w4s2I5kEcD3Jw_T-1ToIOLBxDhsnL2qDiXHCMKcOsSjydUb_5uuvNhn4nQsKLWGwtWeCBcWHnrsKRdZKtIdHIMj-Zimy9HvmJoRjihWIIQhQDoDxzClQXciOF3s8MBKx_QrbmoTGlPokcvI7lZxOj9hezdmwEvRhD54NHOinJTshFT_IUSqObJPJIqd_nvL-T6M8doEayQnj4im34RNk2CobkmA"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-lg space-y-lg">
+<!-- Quick Stats Section -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-white p-6 rounded border border-slate-200 shadow-none">
+<div class="flex items-center justify-between">
+<span class="text-label-caps text-slate-500 font-label-caps">NEW ALERTS</span>
+<span class="flex h-2 w-2 rounded-full bg-error"></span>
+</div>
+<p class="text-headline-lg font-headline-lg text-on-surface mt-2">12</p>
+<p class="text-xs text-error font-medium mt-1">+4 since 08:00 AM</p>
+</div>
+<div class="bg-white p-6 rounded border border-slate-200 shadow-none">
+<span class="text-label-caps text-slate-500 font-label-caps">INTERVENTIONS PENDING</span>
+<p class="text-headline-lg font-headline-lg text-on-surface mt-2">07</p>
+<p class="text-xs text-on-surface-variant font-medium mt-1">3 Critical priority</p>
+</div>
+<div class="bg-white p-6 rounded border border-slate-200 shadow-none">
+<span class="text-label-caps text-slate-500 font-label-caps">STABILIZED PATIENTS</span>
+<p class="text-headline-lg font-headline-lg text-on-surface mt-2">48</p>
+<p class="text-xs text-blue-600 font-medium mt-1">84% of daily target</p>
+</div>
+<div class="bg-white p-6 rounded border border-slate-200 shadow-none">
+<span class="text-label-caps text-slate-500 font-label-caps">TOTAL MONITORED</span>
+<p class="text-headline-lg font-headline-lg text-on-surface mt-2">156</p>
+<div class="w-full bg-slate-100 h-1.5 mt-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[72%]"></div>
+</div>
+</div>
+</div>
+<!-- Bento Content Layout -->
+<div class="bento-grid">
+<!-- Patient Summary Chart / Distribution (Col 1-4) -->
+<div class="col-span-12 lg:col-span-4 bg-white p-6 rounded border border-slate-200 flex flex-col">
+<h2 class="text-headline-md font-headline-md mb-6">Patient Distribution</h2>
+<div class="flex-1 flex flex-col justify-center items-center">
+<!-- Simplified Visualization Representing At-Risk vs Stable -->
+<div class="relative h-48 w-48 mb-8">
+<svg class="h-full w-full transform -rotate-90">
+<circle class="text-slate-100" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="16"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502" stroke-dashoffset="150" stroke-width="16"></circle>
+<circle class="text-error" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502" stroke-dashoffset="420" stroke-width="16"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="text-headline-lg">156</span>
+<span class="text-[10px] text-slate-500 font-label-caps">PATIENTS</span>
+</div>
+</div>
+<div class="w-full space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="text-body-md font-body-md text-slate-700">High Risk (At Risk)</span>
+</div>
+<span class="text-data-mono font-data-mono font-bold">24</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-body-md font-body-md text-slate-700">Medium Risk</span>
+</div>
+<span class="text-data-mono font-data-mono font-bold">42</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-slate-200"></span>
+<span class="text-body-md font-body-md text-slate-700">Stable</span>
+</div>
+<span class="text-data-mono font-data-mono font-bold">90</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Prioritized Alerts (Col 5-12) -->
+<div class="col-span-12 lg:col-span-8 bg-white rounded border border-slate-200 overflow-hidden">
+<div class="p-6 border-b border-slate-200 flex items-center justify-between bg-slate-50/30">
+<h2 class="text-headline-md font-headline-md">High Priority Patient Alerts</h2>
+<div class="flex gap-2">
+<button class="text-xs bg-white border border-slate-200 px-3 py-1.5 rounded font-medium text-slate-600 hover:bg-slate-50">Filter</button>
+<button class="text-xs bg-white border border-slate-200 px-3 py-1.5 rounded font-medium text-slate-600 hover:bg-slate-50">Export</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50">
+<th class="px-6 py-3 text-label-caps text-slate-500 font-label-caps">Patient</th>
+<th class="px-6 py-3 text-label-caps text-slate-500 font-label-caps">Risk Status</th>
+<th class="px-6 py-3 text-label-caps text-slate-500 font-label-caps">Blood Pressure</th>
+<th class="px-6 py-3 text-label-caps text-slate-500 font-label-caps">Heart Rate</th>
+<th class="px-6 py-3 text-label-caps text-slate-500 font-label-caps">Trend</th>
+<th class="px-6 py-3 text-label-caps text-slate-500 font-label-caps">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Patient 1 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Robert Chen</span>
+<span class="text-[11px] text-slate-500">ID: MC-4029 | Post-Op</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-error-container text-on-error-container">
+                                            High Risk
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<div class="inline-block bg-red-50 px-2 py-1 rounded">
+<span class="text-data-mono font-data-mono text-error font-bold">160/100</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="inline-block bg-red-50 px-2 py-1 rounded">
+<span class="text-data-mono font-data-mono text-error font-bold">105 bpm</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-error">trending_up</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary font-semibold text-xs hover:underline">Review</button>
+</td>
+</tr>
+<!-- Patient 2 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Elena Rodriguez</span>
+<span class="text-[11px] text-slate-500">ID: MC-3155 | Hypertension</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary-container text-on-secondary-container">
+                                            Medium Risk
+                                        </span>
+</td>
+<td class="px-6 py-4 font-data-mono text-on-surface">142/88</td>
+<td class="px-6 py-4 font-data-mono text-on-surface">92 bpm</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-outline">trending_flat</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary font-semibold text-xs hover:underline">Review</button>
+</td>
+</tr>
+<!-- Patient 3 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Samuel L. Jackson</span>
+<span class="text-[11px] text-slate-500">ID: MC-8821 | COPD Monitoring</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700">
+                                            Stable
+                                        </span>
+</td>
+<td class="px-6 py-4 font-data-mono text-on-surface">120/80</td>
+<td class="px-6 py-4 font-data-mono text-on-surface">72 bpm</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-blue-500">trending_down</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary font-semibold text-xs hover:underline">Review</button>
+</td>
+</tr>
+<!-- Patient 4 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Linda Garrison</span>
+<span class="text-[11px] text-slate-500">ID: MC-2291 | Arrhythmia</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-error-container text-on-error-container">
+                                            High Risk
+                                        </span>
+</td>
+<td class="px-6 py-4 font-data-mono text-on-surface">118/76</td>
+<td class="px-6 py-4">
+<div class="inline-block bg-red-50 px-2 py-1 rounded">
+<span class="text-data-mono font-data-mono text-error font-bold">118 bpm</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-error">warning</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary font-semibold text-xs hover:underline">Review</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Intervention Timeline (Asymmetric Layout Column) -->
+<div class="col-span-12 bg-white p-6 rounded border border-slate-200">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-headline-md font-headline-md">Recent Stabilizations</h2>
+<a class="text-primary text-xs font-bold flex items-center gap-1" href="#">View Full History <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="flex items-start gap-gutter overflow-x-auto pb-4">
+<div class="min-w-[280px] p-4 rounded-lg border border-slate-100 bg-slate-50/50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-label-caps text-slate-500">STABILIZED 12M AGO</span>
+<span class="material-symbols-outlined text-blue-500 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-bold text-sm">Sarah Jenkins</h3>
+<p class="text-xs text-slate-600 mt-1">HR normalized to 78bpm after beta-blocker intervention.</p>
+</div>
+<div class="min-w-[280px] p-4 rounded-lg border border-slate-100 bg-slate-50/50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-label-caps text-slate-500">STABILIZED 45M AGO</span>
+<span class="material-symbols-outlined text-blue-500 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-bold text-sm">Michael Scott</h3>
+<p class="text-xs text-slate-600 mt-1">SpO2 levels recovered to 96% on room air.</p>
+</div>
+<div class="min-w-[280px] p-4 rounded-lg border border-slate-100 bg-slate-50/50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-label-caps text-slate-500">STABILIZED 1H AGO</span>
+<span class="material-symbols-outlined text-blue-500 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-bold text-sm">Diana Prince</h3>
+<p class="text-xs text-slate-600 mt-1">MAP within target range following fluid resuscitation.</p>
+</div>
+<div class="min-w-[280px] p-4 rounded-lg border border-slate-100 bg-slate-50/50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-label-caps text-slate-500">STABILIZED 2H AGO</span>
+<span class="material-symbols-outlined text-blue-500 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-bold text-sm">Arthur Curry</h3>
+<p class="text-xs text-slate-600 mt-1">Glucose level stabilized post-insulin protocol.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB Overlay -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="h-14 w-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MedCore ChronicCare - Patient Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e3037",
+                    "outline": "#737784",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "background": "#faf8ff",
+                    "surface": "#faf8ff",
+                    "surface-container": "#ededf6",
+                    "primary-fixed": "#d9e2ff",
+                    "on-primary-fixed-variant": "#00419c",
+                    "on-secondary-fixed": "#0b1c30",
+                    "inverse-primary": "#b0c6ff",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-container-highest": "#e1e2eb",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-secondary-container": "#54647a",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "secondary": "#505f76",
+                    "secondary-container": "#d0e1fb",
+                    "on-surface-variant": "#434653",
+                    "inverse-on-surface": "#f0f0f9",
+                    "surface-dim": "#d9d9e2",
+                    "on-tertiary-container": "#ffc0a7",
+                    "surface-container-low": "#f3f3fc",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#001945",
+                    "tertiary-container": "#993900",
+                    "surface-bright": "#faf8ff",
+                    "on-tertiary-fixed": "#360f00",
+                    "outline-variant": "#c3c6d5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1a1a1a",
+                    "primary": "#005fb8",
+                    "surface-tint": "#1d59c1",
+                    "surface-variant": "#e1e2eb",
+                    "surface-container-high": "#e7e7f1",
+                    "on-background": "#1a1a1a",
+                    "on-primary-container": "#bcceff",
+                    "on-error": "#ffffff",
+                    "primary-container": "#0f52ba",
+                    "tertiary": "#732900",
+                    "error": "#c42b1c",
+                    "win-bg": "#f3f3f3",
+                    "win-surface": "#ffffff",
+                    "win-border": "#e5e5e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "4px",
+                    "lg": "8px",
+                    "xl": "12px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xl": "48px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "base-unit": "4px",
+                    "container-max": "1440px",
+                    "md": "16px",
+                    "gutter": "20px"
+            },
+            "fontFamily": {
+                    "segoe": ["'Segoe UI Variable'", "'Segoe UI'", "sans-serif"],
+                    "body-lg": ["'Segoe UI'", "sans-serif"],
+                    "label-caps": ["'Segoe UI'", "sans-serif"],
+                    "headline-md": ["'Segoe UI Variable'", "'Segoe UI'", "sans-serif"],
+                    "body-md": ["'Segoe UI'", "sans-serif"],
+                    "headline-lg": ["'Segoe UI Variable'", "'Segoe UI'", "sans-serif"],
+                    "data-mono": ["'Segoe UI'", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-lg": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>body {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuB7FzOLSGMVsHZ6k6xf0YchJDFmMeObyG5hkB2mPQKpc4E1ZZwZY7xVPrEApxJCG-GHeIqox0kKX68GE6orDMZ4Uxf25iKR6g4diDJumZ5kkbumHJf9AyDvt_IEYC-7s5RQXNZUwPqB1mrwbe4xSC_DGJF6bNgP9IpaIAVcKq9d1EyHB45fegHGkvywJ5fb3T4VxKJZ2YgeKAbPdFGiLjmmFHxnin1Vg7h50eBiWjcDeXBkurI42iOW07bSOQApEbkgHRhNk9Cf1X4J);
+    background-size: cover;
+    background-position: center
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.chart-grid {
+    background-image: linear-gradient(to right, #f3f3f3 1px, transparent 1px), linear-gradient(to bottom, #f3f3f3 1px, transparent 1px);
+    background-size: 20px 20px
+    }
+.win-button {
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    border-bottom-color: #a6a6a6;
+    color: #1a1a1a;
+    transition: all 0.1s ease
+    }
+.win-button:hover {
+    background-color: #f6f6f6
+    }
+.win-button:active {
+    background-color: #f0f0f0;
+    color: #5e5e5e;
+    border-bottom-color: #d1d1d1
+    }
+.win-button-primary {
+    background-color: #005fb8;
+    border: 1px solid #005fb8;
+    border-bottom-color: #004a90;
+    color: #fff;
+    transition: all 0.1s ease
+    }
+.win-button-primary:hover {
+    background-color: #0056a6
+    }
+.win-button-primary:active {
+    background-color: #004c93;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom-color: #005fb8
+    }
+.win-input {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-bottom-color: #8c8c8c;
+    transition: all 0.1s ease
+    }
+.win-input:focus {
+    border-bottom-color: #005fb8;
+    border-bottom-width: 2px;
+    outline: none;
+    padding-bottom: 3.5px;
+    /* adjust for 2px border */
+    }
+.win-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02)
+    }</style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center p-4 sm:p-8 overflow-hidden font-segoe text-on-surface">
+<!-- App Window Container -->
+<div class="w-full h-full max-w-[1600px] bg-win-bg/90 backdrop-blur-xl rounded-[8px] shadow-2xl border border-[#999999] flex flex-col overflow-hidden relative ring-1 ring-white/20">
+<!-- Title Bar -->
+<div class="h-8 flex items-center justify-between select-none relative z-50">
+<div class="flex items-center pl-4 gap-3 text-[12px] text-[#1a1a1a] font-segoe">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="monitor_heart">monitor_heart</span>
+<span>MedCore ChronicCare</span>
+</div>
+<div class="flex h-full">
+<button class="w-[46px] h-full flex items-center justify-center hover:bg-black/5 text-[#1a1a1a] transition-colors">
+<span class="material-symbols-outlined text-[16px] font-light" data-icon="minimize">minimize</span>
+</button>
+<button class="w-[46px] h-full flex items-center justify-center hover:bg-black/5 text-[#1a1a1a] transition-colors">
+<span class="material-symbols-outlined text-[14px] font-light" data-icon="check_box_outline_blank">check_box_outline_blank</span>
+</button>
+<button class="w-[46px] h-full flex items-center justify-center hover:bg-[#e81123] hover:text-white text-[#1a1a1a] transition-colors">
+<span class="material-symbols-outlined text-[16px] font-light" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<!-- Main Application Area -->
+<div class="flex flex-1 overflow-hidden relative border-t border-white/50">
+<!-- SideNavBar (WinUI NavigationView style) -->
+<aside class="flex flex-col h-full w-64 bg-transparent border-r border-win-border shadow-none py-2 shrink-0">
+<div class="px-4 mb-4 mt-2">
+<div class="text-base font-semibold text-slate-900">MedCore Monitor</div>
+<div class="text-xs text-slate-500">Clinical Command Center</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 text-[#1a1a1a] py-2 px-3 rounded hover:bg-black/5 transition-colors font-segoe text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="grid_view">grid_view</span>
+                    Patient Dashboard
+                </a>
+<a class="flex items-center gap-3 bg-black/5 text-[#1a1a1a] py-2 px-3 rounded font-segoe text-sm relative" href="#">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-primary rounded-r-full"></div>
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="person_search" style="font-variation-settings: 'FILL' 1;">person_search</span>
+                    Patient Detail
+                </a>
+<a class="flex items-center gap-3 text-[#1a1a1a] py-2 px-3 rounded hover:bg-black/5 transition-colors font-segoe text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="emergency_home">emergency_home</span>
+                    Intervention Management
+                </a>
+<a class="flex items-center gap-3 text-[#1a1a1a] py-2 px-3 rounded hover:bg-black/5 transition-colors font-segoe text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="patient_list">patient_list</span>
+                    Health Log
+                </a>
+</nav>
+<div class="p-3">
+<button class="w-full win-button-primary py-1.5 px-4 rounded flex items-center justify-center gap-2 font-segoe text-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+                    New Intervention
+                </button>
+</div>
+<div class="mt-auto p-3 space-y-1">
+<a class="flex items-center gap-3 text-[#1a1a1a] py-2 px-3 rounded hover:bg-black/5 transition-colors font-segoe text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="help_outline">help_outline</span>
+                    Support
+                </a>
+<a class="flex items-center gap-3 text-[#1a1a1a] py-2 px-3 rounded hover:bg-black/5 transition-colors font-segoe text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</div>
+</aside>
+<!-- Content Area -->
+<div class="flex-1 flex flex-col overflow-hidden bg-win-surface rounded-tl-[8px] border-l border-t border-win-border shadow-[-4px_-4px_10px_rgba(0,0,0,0.02)]">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between h-14 px-6 sticky top-0 z-40 bg-win-surface/80 backdrop-blur-md border-b border-win-border">
+<div class="flex items-center gap-6">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-slate-500 text-[16px]" data-icon="search">search</span>
+<input class="win-input pl-8 pr-4 py-1.5 rounded text-sm w-72" placeholder="Search Patients or Records..." type="text"/>
+</div>
+</div>
+<nav class="flex items-center gap-6 font-segoe text-sm">
+<a class="text-slate-600 hover:text-primary transition-colors" href="#">Alert History</a>
+<a class="text-slate-600 hover:text-primary transition-colors" href="#">Reports</a>
+<div class="h-4 w-px bg-slate-300"></div>
+<div class="flex items-center gap-4">
+<button class="bg-[#c42b1c] text-white px-3 py-1 rounded-[4px] text-xs font-semibold">Emergency Protocol</button>
+<div class="flex items-center gap-3 text-slate-600">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary text-[20px]" data-icon="notifications">notifications</span>
+<div class="flex items-center gap-2 cursor-pointer group hover:bg-slate-100 p-1 rounded transition-colors">
+<img alt="Dr. Specialist" class="w-7 h-7 rounded-full border border-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNrah0tXGtZOp91WAXfnmsgi1tKmgawdqMGgjO9FaCIA_brJrcmOfouNGTxtcBMMrBguESocuTY04uZTN2hdJUju4MbYjPllWqe3ZAXPwut3LUH4if63SPhOGw5-Tw_C1KHINdrGlJoLF1xTVTwSMXq4las2OAQIsSbZhuzWWfGtcraY9DaW-iB-hZ8dfyK3S7wrEwjhY_xOPgf17Wr1LvTGYcna9jxCcbFZhcU5ujN7cVVusLlpLFY4OGUeMcPmA8hf2IS4gGmh6d"/>
+<span class="text-sm font-medium">Dr. Sterling</span>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 overflow-y-auto p-6 md:p-8 max-w-[1400px] mx-auto w-full pb-20">
+<!-- Individual Patient Header -->
+<section class="win-card rounded-lg p-6 mb-6 flex flex-wrap items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<div class="relative">
+<img alt="Patient Image" class="w-20 h-20 rounded-full object-cover border-2 border-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnsrzDvB8I8PLPSwV7SgnSOpcDhsWenWxFLSvrHzj8YA0k7GqDiXAICTfMxMKIzx2XmnPR2Uy_4FTJ1OaEV6dJigA40e7aQTAABCzdCxkdtrVdMDmwi2Hs9e_W3CYLCRa_G9rGGGK9oS1BifWW-dPlMZR4jsBE7EsVFe7c2xO7O_JKWioUoQzfW1-Cgpw2b_oJbsbJQMsP7Q9DtqgqMu0jxSprTC2b9yY4v0ZJvUK_-31Uq4Hr9mIFLqM6hWWmW9EoK5rXkKrvNeh7"/>
+<span class="absolute bottom-1 right-1 bg-[#107c10] w-3.5 h-3.5 rounded-full border-2 border-white"></span>
+</div>
+<div>
+<div class="flex items-center gap-3">
+<h1 class="font-headline-lg text-slate-900">Eleanor Vance</h1>
+<span class="bg-slate-100 border border-slate-200 text-slate-700 text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wide">In-Patient</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-slate-500 mt-1">
+<span>ID: #MED-8829-X</span>
+<span class="w-1 h-1 rounded-full bg-slate-300"></span>
+<span>Female, 72 Years</span>
+<span class="w-1 h-1 rounded-full bg-slate-300"></span>
+<span>Room 402-B</span>
+</div>
+<div class="flex gap-2 mt-3">
+<span class="px-2 py-1 bg-slate-50 text-slate-700 text-xs rounded border border-slate-200">Hypertension</span>
+<span class="px-2 py-1 bg-slate-50 text-slate-700 text-xs rounded border border-slate-200">Type 2 Diabetes</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-8 border-l border-slate-200 pl-8">
+<div class="text-center">
+<div class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1">Blood Pressure</div>
+<div class="font-headline-md text-[#c42b1c] flex items-baseline gap-1">
+                                142/92 <span class="text-xs font-normal text-slate-500">mmHg</span>
+</div>
+<div class="text-[10px] text-[#c42b1c] font-semibold flex items-center justify-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="trending_up">trending_up</span> 8%
+                            </div>
+</div>
+<div class="text-center">
+<div class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1">Blood Glucose</div>
+<div class="font-headline-md text-slate-900 flex items-baseline gap-1">
+                                108 <span class="text-xs font-normal text-slate-500">mg/dL</span>
+</div>
+<div class="text-[10px] text-[#107c10] font-semibold flex items-center justify-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="stable">video_stable</span> Stable
+                            </div>
+</div>
+<div class="text-center">
+<div class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1">Adherence</div>
+<div class="font-headline-md text-slate-900">94%</div>
+<div class="h-1 w-16 bg-slate-200 rounded-full mx-auto mt-2 overflow-hidden">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<button class="win-button-primary px-4 py-1.5 rounded font-segoe text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="history">history</span>
+                            Intervention History
+                        </button>
+<button class="win-button px-4 py-1.5 rounded font-segoe text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="edit_note">edit_note</span>
+                            Add Clinical Note
+                        </button>
+</div>
+</section>
+<!-- Bento Grid Insights -->
+<div class="grid grid-cols-12 gap-6">
+<!-- AI Deterioration Risk Score -->
+<div class="col-span-12 lg:col-span-4 win-card rounded-lg p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-slate-900 text-base">Deterioration Risk</h3>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="psychology">psychology</span>
+</div>
+<div class="flex flex-col items-center py-4">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-slate-200" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-[#c42b1c]" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="116.6" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-semibold text-slate-900">68%</span>
+<span class="text-[10px] font-semibold text-[#c42b1c] uppercase tracking-wide mt-1">Elevated</span>
+</div>
+</div>
+</div>
+<div class="mt-4 bg-[#fdf2f2] p-4 rounded border border-[#f8d7da]">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#c42b1c] text-lg mt-0.5" data-icon="warning">warning</span>
+<div class="text-sm">
+<span class="font-semibold text-[#842029] block mb-1">Explainability Insight</span>
+<p class="text-[#842029] text-xs leading-relaxed">
+                                            Rising Systolic BP trend (+12mmHg) over last 3 days correlated with a 15% drop in overnight sleep duration. Potential hypertensive episode if trend persists.
+                                        </p>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full text-primary font-semibold text-xs uppercase tracking-wide hover:underline text-center">View Prediction Factors</button>
+</div>
+<!-- Blood Pressure Chart -->
+<div class="col-span-12 lg:col-span-8 win-card rounded-lg p-6">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-headline-md text-slate-900 text-base">Blood Pressure Trends</h3>
+<p class="text-xs text-slate-500 mt-1">Longitudinal data from last 7 days</p>
+</div>
+<div class="flex bg-slate-100 p-1 rounded border border-slate-200">
+<button class="px-3 py-1 rounded text-xs font-semibold text-slate-600 hover:bg-slate-200">Day</button>
+<button class="px-3 py-1 bg-white shadow-sm rounded text-xs font-semibold text-slate-900">Week</button>
+<button class="px-3 py-1 rounded text-xs font-semibold text-slate-600 hover:bg-slate-200">Month</button>
+</div>
+</div>
+<div class="h-64 relative chart-grid border-l border-b border-slate-300 flex items-end px-4">
+<svg class="absolute inset-0 w-full h-full p-4 overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<polyline fill="none" points="0,60 15,55 30,58 45,45 60,35 75,30 100,25" stroke="#c42b1c" stroke-linejoin="round" stroke-width="2"></polyline>
+<polyline fill="none" points="0,85 15,82 30,84 45,78 60,72 75,68 100,65" stroke="#005fb8" stroke-linejoin="round" stroke-width="2"></polyline>
+<circle cx="0" cy="60" fill="#c42b1c" r="2"></circle>
+<circle cx="15" cy="55" fill="#c42b1c" r="2"></circle>
+<circle cx="30" cy="58" fill="#c42b1c" r="2"></circle>
+<circle cx="45" cy="45" fill="#c42b1c" r="2"></circle>
+<circle cx="60" cy="35" fill="#c42b1c" r="2"></circle>
+<circle cx="75" cy="30" fill="#c42b1c" r="2"></circle>
+<circle cx="100" cy="25" fill="#c42b1c" r="2"></circle>
+</svg>
+<div class="w-full flex justify-between absolute -bottom-6 left-0 text-[10px] text-slate-500 font-semibold px-4">
+<span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+</div>
+<div class="absolute -left-8 inset-y-0 flex flex-col justify-between text-[10px] text-slate-500 font-semibold py-4 items-end">
+<span>160</span><span>140</span><span>120</span><span>100</span><span>80</span>
+</div>
+</div>
+<div class="flex gap-6 mt-10 pt-4 border-t border-slate-100">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#c42b1c]"></span>
+<span class="text-xs font-semibold text-slate-700">Systolic Avg: 138</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#005fb8]"></span>
+<span class="text-xs font-semibold text-slate-700">Diastolic Avg: 88</span>
+</div>
+</div>
+</div>
+<!-- Adherence & Lifestyle Sub-Grid -->
+<div class="col-span-12 lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Medication Adherence -->
+<div class="win-card rounded-lg p-5">
+<h3 class="font-headline-md text-slate-900 text-sm mb-4">Medication Adherence</h3>
+<div class="flex items-end gap-2 h-24">
+<div class="flex-1 bg-slate-200 h-[100%] rounded-sm"></div>
+<div class="flex-1 bg-slate-200 h-[100%] rounded-sm"></div>
+<div class="flex-1 bg-slate-200 h-[85%] rounded-sm"></div>
+<div class="flex-1 bg-slate-200 h-[100%] rounded-sm"></div>
+<div class="flex-1 bg-slate-200 h-[90%] rounded-sm"></div>
+<div class="flex-1 bg-primary h-[94%] rounded-sm"></div>
+<div class="flex-1 bg-primary h-[94%] rounded-sm"></div>
+</div>
+<div class="flex justify-between mt-4 items-end">
+<div>
+<span class="text-xl font-semibold text-slate-900">94.2%</span>
+<span class="text-[10px] text-[#107c10] font-semibold ml-1">+2.1%</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[20px]" data-icon="pill">pill</span>
+</div>
+</div>
+<!-- Step Count Trend -->
+<div class="win-card rounded-lg p-5">
+<h3 class="font-headline-md text-slate-900 text-sm mb-4">Mobility (Steps)</h3>
+<div class="flex items-center justify-center h-24 relative">
+<svg class="w-full h-16" viewbox="0 0 200 40">
+<path d="M0,35 Q20,38 40,30 T80,32 T120,25 T160,15 T200,10" fill="none" stroke="#e5e5e5" stroke-linecap="round" stroke-width="3"></path>
+<path d="M0,35 Q20,38 40,30 T80,32 T120,25 T160,15 T200,10" fill="none" stroke="#005fb8" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+<div class="absolute bottom-0 right-0 text-[10px] text-slate-500">Target: 4k/day</div>
+</div>
+<div class="flex justify-between mt-4 items-end">
+<div>
+<span class="text-xl font-semibold text-slate-900">3,420</span>
+<span class="text-xs text-slate-500 ml-1">avg/day</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[20px]" data-icon="directions_walk">directions_walk</span>
+</div>
+</div>
+<!-- Sleep Quality -->
+<div class="win-card rounded-lg p-5">
+<h3 class="font-headline-md text-slate-900 text-sm mb-4">Sleep Quality</h3>
+<div class="flex items-center gap-1.5 h-24">
+<div class="h-full w-4 bg-slate-100 flex flex-col-reverse rounded-full overflow-hidden">
+<div class="bg-primary w-full h-[70%]"></div>
+</div>
+<div class="h-full w-4 bg-slate-100 flex flex-col-reverse rounded-full overflow-hidden">
+<div class="bg-primary w-full h-[65%]"></div>
+</div>
+<div class="h-full w-4 bg-slate-100 flex flex-col-reverse rounded-full overflow-hidden">
+<div class="bg-primary w-full h-[75%]"></div>
+</div>
+<div class="h-full w-4 bg-slate-100 flex flex-col-reverse rounded-full overflow-hidden">
+<div class="bg-primary w-full h-[80%]"></div>
+</div>
+<div class="h-full w-4 bg-slate-100 flex flex-col-reverse rounded-full overflow-hidden">
+<div class="bg-[#e8b3b8] w-full h-[40%]"></div>
+</div>
+<div class="h-full w-4 bg-slate-100 flex flex-col-reverse rounded-full overflow-hidden">
+<div class="bg-[#e8b3b8] w-full h-[45%]"></div>
+</div>
+<div class="h-full w-4 bg-slate-100 flex flex-col-reverse rounded-full overflow-hidden">
+<div class="bg-[#c42b1c] w-full h-[35%]"></div>
+</div>
+</div>
+<div class="flex justify-between mt-4 items-end">
+<div>
+<span class="text-xl font-semibold text-slate-900">5.2h</span>
+<span class="text-[10px] text-[#c42b1c] font-semibold ml-1">-1.8h</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[20px]" data-icon="bedtime">bedtime</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Section: Medication Table -->
+<section class="mt-6 win-card rounded-lg overflow-hidden">
+<div class="p-5 border-b border-slate-200 flex justify-between items-center bg-white/50">
+<h3 class="font-headline-md text-slate-900 text-base">Active Medication &amp; Adherence Log</h3>
+<button class="text-primary text-sm font-semibold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[16px]" data-icon="clinical_notes">clinical_notes</span>
+                            View Full Rx History
+                        </button>
+</div>
+<table class="w-full text-left">
+<thead class="bg-slate-50/50 text-[11px] text-slate-500 font-semibold uppercase tracking-wide border-b border-slate-200">
+<tr>
+<th class="px-5 py-3 font-semibold">Medication</th>
+<th class="px-5 py-3 font-semibold">Dosage</th>
+<th class="px-5 py-3 font-semibold">Frequency</th>
+<th class="px-5 py-3 font-semibold">Adherence (30d)</th>
+<th class="px-5 py-3 font-semibold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-sm bg-white/30">
+<tr class="hover:bg-white/60 transition-colors">
+<td class="px-5 py-3.5 font-semibold text-slate-900">Lisinopril</td>
+<td class="px-5 py-3.5 text-slate-600">10 mg Oral Tablet</td>
+<td class="px-5 py-3.5 text-slate-600">Once Daily (AM)</td>
+<td class="px-5 py-3.5">
+<div class="flex items-center gap-3">
+<div class="w-24 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+<div class="h-full bg-[#107c10] w-[98%]"></div>
+</div>
+<span class="text-xs font-semibold">98%</span>
+</div>
+</td>
+<td class="px-5 py-3.5">
+<span class="px-2 py-0.5 bg-[#dff6dd] text-[#107c10] text-[11px] font-semibold rounded border border-[#c1e7be]">Active</span>
+</td>
+</tr>
+<tr class="hover:bg-white/60 transition-colors">
+<td class="px-5 py-3.5 font-semibold text-slate-900">Metformin</td>
+<td class="px-5 py-3.5 text-slate-600">500 mg Oral Tablet</td>
+<td class="px-5 py-3.5 text-slate-600">Twice Daily (AM/PM)</td>
+<td class="px-5 py-3.5">
+<div class="flex items-center gap-3">
+<div class="w-24 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+<div class="h-full bg-[#107c10] w-[92%]"></div>
+</div>
+<span class="text-xs font-semibold">92%</span>
+</div>
+</td>
+<td class="px-5 py-3.5">
+<span class="px-2 py-0.5 bg-[#dff6dd] text-[#107c10] text-[11px] font-semibold rounded border border-[#c1e7be]">Active</span>
+</td>
+</tr>
+<tr class="hover:bg-white/60 transition-colors">
+<td class="px-5 py-3.5 font-semibold text-slate-900">Atorvastatin</td>
+<td class="px-5 py-3.5 text-slate-600">20 mg Oral Tablet</td>
+<td class="px-5 py-3.5 text-slate-600">Once Daily (PM)</td>
+<td class="px-5 py-3.5">
+<div class="flex items-center gap-3">
+<div class="w-24 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+<div class="h-full bg-[#ffb900] w-[74%]"></div>
+</div>
+<span class="text-xs font-semibold">74%</span>
+</div>
+</td>
+<td class="px-5 py-3.5">
+<span class="px-2 py-0.5 bg-[#fff4ce] text-[#9d5d00] text-[11px] font-semibold rounded border border-[#fceaa0]">Monitor</span>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</main>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<title>MedCore Monitor | Intervention Management</title>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-primary": "#ffffff", "inverse-surface": "#2e3037", outline: "#737784", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#ffb596", background: "#faf8ff", surface: "#faf8ff", "surface-container": "#ededf6", "primary-fixed": "#d9e2ff", "on-primary-fixed-variant": "#00419c", "on-secondary-fixed": "#0b1c30", "inverse-primary": "#b0c6ff", "tertiary-fixed": "#ffdbcd", "surface-container-highest": "#e1e2eb", "secondary-fixed-dim": "#b7c8e1", "on-secondary-container": "#54647a", "on-tertiary-fixed-variant": "#7d2d00", "primary-fixed-dim": "#b0c6ff", "on-error-container": "#93000a", "secondary-fixed": "#d3e4fe", "on-secondary-fixed-variant": "#38485d", secondary: "#505f76", "secondary-container": "#d0e1fb", "on-surface-variant": "#434653", "inverse-on-surface": "#f0f0f9", "surface-dim": "#d9d9e2", "on-tertiary-container": "#ffc0a7", "surface-container-low": "#f3f3fc", "error-container": "#ffdad6", "on-primary-fixed": "#001945", "tertiary-container": "#993900", "surface-bright": "#faf8ff", "on-tertiary-fixed": "#360f00", "outline-variant": "#c3c6d5", "surface-container-lowest": "#ffffff", "on-tertiary": "#ffffff", "on-surface": "#191b22", primary: "#005fb8", "surface-tint": "#1d59c1", "surface-variant": "#e1e2eb", "surface-container-high": "#e7e7f1", "on-background": "#191b22", "on-primary-container": "#bcceff", "on-error": "#ffffff", "primary-container": "#0f52ba", tertiary: "#732900", error: "#ba1a1a", "win-bg": "#f3f2f1", "win-surface": "#ffffff", "win-border": "#e5e5e5", "win-hover": "#f3f2f1"}, borderRadius: {DEFAULT: "4px", lg: "8px", xl: "8px", full: "9999px"}, spacing: {lg: "24px", xl: "48px", xs: "4px", sm: "8px", "base-unit": "4px", "container-max": "1440px", md: "16px", gutter: "20px"}, fontFamily: {"body-lg": ["Segoe UI", "Inter", "sans-serif"], "label-caps": ["Segoe UI", "Public Sans", "sans-serif"], "headline-md": ["Segoe UI", "Manrope", "sans-serif"], "body-md": ["Segoe UI", "Inter", "sans-serif"], "headline-lg": ["Segoe UI", "Manrope", "sans-serif"], "data-mono": ["Consolas", "monospace"], headline: ["Segoe UI", "Manrope", "sans-serif"], display: ["Segoe UI", "Manrope", "sans-serif"], body: ["Segoe UI", "Inter", "sans-serif"], label: ["Segoe UI", "Public Sans", "sans-serif"]}, fontSize: {"body-lg": ["16px", {lineHeight: "24px", fontWeight: "400"}], "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600"}], "headline-md": ["20px", {lineHeight: "28px", fontWeight: "600"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}], "headline-lg": ["28px", {lineHeight: "36px", fontWeight: "600"}], "data-mono": ["14px", {lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "500"}]}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+        /* Windows scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #c1c1c1;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #a8a8a8;
+        }
+    </style>
+</head>
+<body class="bg-win-bg h-screen overflow-hidden flex flex-col font-body text-on-surface select-none">
+<!-- Title Bar -->
+<div class="h-8 bg-win-bg flex items-center justify-between shrink-0">
+<div class="flex items-center pl-4 gap-2 text-xs text-slate-700 font-medium">
+<span class="material-symbols-outlined text-[14px]">ecg_heart</span>
+<span>MedCore Monitor - Intervention Management</span>
+</div>
+<div class="flex h-full">
+<button class="h-full px-4 hover:bg-black/5 flex items-center justify-center text-slate-700 transition-colors"><span class="material-symbols-outlined text-[16px]">minimize</span></button>
+<button class="h-full px-4 hover:bg-black/5 flex items-center justify-center text-slate-700 transition-colors"><span class="material-symbols-outlined text-[14px]">check_box_outline_blank</span></button>
+<button class="h-full px-4 hover:bg-red-500 hover:text-white flex items-center justify-center text-slate-700 transition-colors"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</div>
+</div>
+<!-- Main App Area -->
+<div class="flex flex-1 overflow-hidden bg-[#faf9f8] border-t border-win-border rounded-tl-lg shadow-[inset_0_1px_0_rgba(255,255,255,0.5)]">
+<!-- SideNavBar Shell -->
+<aside class="flex flex-col w-64 bg-win-bg border-r border-win-border shrink-0 pt-4">
+<div class="px-4 mb-6">
+<h1 class="text-lg font-semibold text-slate-900">MedCore Monitor</h1>
+<p class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">Clinical Command</p>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<a class="flex items-center gap-3 text-slate-700 py-2 px-3 rounded hover:bg-black/5 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+                Patient Dashboard
+            </a>
+<a class="flex items-center gap-3 text-slate-700 py-2 px-3 rounded hover:bg-black/5 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">person_search</span>
+                Patient Detail
+            </a>
+<a class="flex items-center gap-3 bg-black/5 text-slate-900 py-2 px-3 rounded relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-4 before:w-1 before:bg-primary before:rounded-r font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-[18px] text-primary">emergency_home</span>
+                Intervention Management
+            </a>
+<a class="flex items-center gap-3 text-slate-700 py-2 px-3 rounded hover:bg-black/5 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">patient_list</span>
+                Health Log
+            </a>
+<div class="pt-4 px-2">
+<button class="w-full bg-primary text-white py-2 px-3 rounded shadow-sm hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Intervention
+                </button>
+</div>
+</nav>
+<div class="p-2 space-y-1 mt-auto border-t border-win-border">
+<a class="flex items-center gap-3 text-slate-700 py-2 px-3 rounded hover:bg-black/5 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 text-slate-700 py-2 px-3 rounded hover:bg-black/5 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                Settings
+            </a>
+</div>
+</aside>
+<!-- Content Area -->
+<div class="flex-1 flex flex-col min-w-0 bg-[#faf9f8]">
+<!-- TopNavBar Shell -->
+<header class="flex items-center justify-between h-14 px-6 border-b border-win-border bg-white shrink-0">
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-win-bg border-b-2 border-transparent hover:bg-black/5 focus:bg-white focus:border-primary focus:ring-0 rounded-t text-sm w-80 transition-all outline-none" placeholder="Search patients or alerts..." type="text"/>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm text-slate-600 hover:text-slate-900 transition-colors" href="#">Alert History</a>
+<a class="text-sm text-slate-600 hover:text-slate-900 transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-3 py-1.5 text-red-700 border border-red-200 bg-red-50 hover:bg-red-100 rounded text-xs font-semibold transition-colors">Emergency Protocol</button>
+<div class="h-6 w-[1px] bg-win-border"></div>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 hover:text-slate-900 relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full border border-white"></span>
+</button>
+<div class="flex items-center gap-2 cursor-pointer hover:bg-black/5 px-2 py-1 rounded transition-colors">
+<div class="w-7 h-7 rounded-full overflow-hidden">
+<img alt="Dr. Specialist" data-alt="Professional portrait of a middle-aged female medical doctor in clinical attire. She has a stethoscope around her neck and is standing in a bright, modern hospital corridor. The lighting is crisp and professional, highlighting a sense of expertise and calm authority within a high-end healthcare setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGJDKW3ff-tlM6FslfDAZpAynxVoz-K0kNLWkgDRErWe_4RcfsQX-VLhC-Ecxi0VTuTHYb3k92ifamOyxf_L4dXNphzny3G0IR8TK4GRfg7aKpBYsFpLksNenL_t9stPovSLf2039jqSyggDa3qQNczzVVbusLGN_Om0Eq5OUCxFP5yXYGG1wtHDwQ3JWFj-x4f5oSwJsLf98L11Y_EDTJDX5Yguvp6Nj38sYXDqmT5gqhPhn-0qQlvfqVLiLUo-6c7PHH0sC74Tkn"/>
+</div>
+<span class="text-sm font-medium text-slate-700">Dr. Sarah Miller</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-6">
+<div class="mb-6 flex justify-between items-end">
+<div>
+<h2 class="text-2xl font-semibold text-slate-900">Intervention Management</h2>
+<p class="text-sm text-slate-500 mt-1">Priority triage for active clinical alerts</p>
+</div>
+<div class="flex gap-2">
+<span class="px-2.5 py-1 bg-red-100 text-red-800 border border-red-200 text-[11px] font-semibold rounded flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">error</span> 4 High Priority
+                    </span>
+<span class="px-2.5 py-1 bg-blue-50 text-blue-800 border border-blue-200 text-[11px] font-semibold rounded flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">pending_actions</span> 12 Pending Review
+                    </span>
+</div>
+</div>
+<!-- Bento Grid Layout for Alerts -->
+<div class="bento-grid">
+<!-- Primary Critical Alert Card -->
+<div class="col-span-12 lg:col-span-8 bg-white border border-win-border rounded shadow-sm">
+<div class="p-6">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-red-100 flex items-center justify-center text-red-600 border border-red-200">
+<span class="material-symbols-outlined text-[24px]">warning</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-slate-900">Cardiovascular Alert: Marcus Wright</h3>
+<p class="text-[11px] text-slate-500 uppercase tracking-wide mt-0.5">Patient ID: #MW-8821 • In-Patient Unit 4</p>
+</div>
+</div>
+<span class="text-[11px] font-mono text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">2 min ago</span>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-6">
+<div class="p-4 bg-win-bg border border-win-border rounded hover:bg-black/[0.02] transition-colors">
+<p class="text-xs text-slate-500 mb-1">Trigger Metric</p>
+<p class="text-xl font-bold text-red-600">114 BPM</p>
+<p class="text-[11px] text-slate-500 mt-1">HR Resting (&gt; 105)</p>
+</div>
+<div class="p-4 bg-win-bg border border-win-border rounded hover:bg-black/[0.02] transition-colors">
+<p class="text-xs text-slate-500 mb-1">Blood Pressure</p>
+<p class="text-xl font-semibold text-slate-800">148/92</p>
+<p class="text-[11px] text-slate-500 mt-1">Systolic Elevated</p>
+</div>
+<div class="p-4 bg-win-bg border border-win-border rounded hover:bg-black/[0.02] transition-colors">
+<p class="text-xs text-slate-500 mb-1">SpO2</p>
+<p class="text-xl font-semibold text-slate-800">94%</p>
+<p class="text-[11px] text-slate-500 mt-1">Borderline Stable</p>
+</div>
+</div>
+<div class="bg-[#f0f4f9] border border-[#d1e0f0] p-5 rounded mb-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[18px]">smart_toy</span>
+<h4 class="font-semibold text-primary text-sm">AI-Generated Recommendation</h4>
+</div>
+<p class="text-sm text-slate-800 mb-4 leading-relaxed">
+                                Initiate immediate Beta-Blocker dosage adjustment. Increase Metoprolol from 25mg to 50mg BID. Schedule follow-up ECG within 4 hours.
+                            </p>
+<div class="border-t border-[#d1e0f0] pt-4">
+<p class="text-[10px] font-semibold text-primary/80 mb-3 uppercase tracking-wider">Explainability &amp; Data Influence</p>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-[#d1e0f0] shadow-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-red-500"></div>
+<span class="text-[11px] font-mono text-slate-600">Tachycardia Trend (72h)</span>
+</div>
+<div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-[#d1e0f0] shadow-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<span class="text-[11px] font-mono text-slate-600">Medication Adherence (98%)</span>
+</div>
+<div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-[#d1e0f0] shadow-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+<span class="text-[11px] font-mono text-slate-600">Recent Activity Level (Low)</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-3 bg-slate-50 -mx-6 -mb-6 p-4 border-t border-win-border rounded-b">
+<button class="bg-primary text-white px-6 py-2 rounded shadow-sm hover:bg-primary/90 transition-colors text-sm font-medium">Apply Recommendation</button>
+<button class="bg-white border border-slate-300 text-slate-700 px-6 py-2 rounded shadow-sm hover:bg-slate-50 transition-colors text-sm font-medium ml-auto">Dismiss</button>
+<button class="bg-white border border-slate-300 text-slate-700 px-6 py-2 rounded shadow-sm hover:bg-slate-50 transition-colors text-sm font-medium">Consult Team</button>
+</div>
+</div>
+</div>
+<!-- Side Module: Stats & Status -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-5">
+<div class="bg-white border border-win-border rounded p-5 shadow-sm">
+<h3 class="text-sm font-semibold text-slate-900 mb-4">System Health</h3>
+<div class="space-y-2">
+<div class="flex justify-between items-center p-2.5 rounded hover:bg-slate-50 border border-transparent hover:border-win-border transition-colors cursor-default">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">analytics</span>
+<span class="text-sm text-slate-700">AI Reliability Score</span>
+</div>
+<span class="font-mono font-semibold text-primary text-sm">99.4%</span>
+</div>
+<div class="flex justify-between items-center p-2.5 rounded hover:bg-slate-50 border border-transparent hover:border-win-border transition-colors cursor-default">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-slate-600 text-[18px]">speed</span>
+<span class="text-sm text-slate-700">Avg Triage Time</span>
+</div>
+<span class="font-mono font-semibold text-slate-700 text-sm">1.2m</span>
+</div>
+<div class="flex justify-between items-center p-2.5 rounded hover:bg-slate-50 border border-transparent hover:border-win-border transition-colors cursor-default">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-red-600 text-[18px]">crisis_alert</span>
+<span class="text-sm text-slate-700">Critical Unresolved</span>
+</div>
+<span class="font-mono font-semibold text-red-600 text-sm">04</span>
+</div>
+</div>
+</div>
+<div class="bg-white border border-win-border rounded p-5 shadow-sm flex-1">
+<img alt="Trend Analysis" class="rounded border border-win-border w-full object-cover h-32 mb-4 shadow-sm" data-alt="A clean, medical-themed data visualization chart showing a linear trend line going upwards. The chart is rendered in professional tones of clinical blue and soft grays with a white background. The aesthetic is modern and minimalist, designed for a healthcare practitioner's dashboard to show patient stability trends over time." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWYmMLYtBEdPMeqP-t6GGZj3ZeJZUc33pqZYVTx8dbL5KoiXs5fdpGW0u5Ys5g4wyn501oeT3UTIcO3CZsQeHMUep0ait40oDXNlrkxCIM6hAlVuQvzVaOknCTmVbCzSiJ4HSJeVeY7x6yKZNoZni-TbMZr1SWpDXc4GSHin8LQ-6S1ZG2S8cQSKeCjAfrYBpSCxUlMwNImMpQu65fZGlkPq4oibXh66eiIlxWs5X3Eov_7RJmiRL4q9yWoMxOAajv5WhaGokQq8Es"/>
+<p class="text-xs text-slate-500 leading-relaxed">
+                            Intervention efficiency has improved by 14% since the last update. Most active cases are currently clustered in Ward B.
+                        </p>
+</div>
+</div>
+<!-- History Log Section -->
+<div class="col-span-12 bg-white border border-win-border rounded shadow-sm overflow-hidden flex flex-col">
+<div class="p-4 border-b border-win-border flex justify-between items-center bg-slate-50/50">
+<h3 class="text-sm font-semibold text-slate-900">Intervention History Log</h3>
+<div class="flex gap-1.5">
+<button class="w-7 h-7 flex items-center justify-center border border-slate-300 rounded bg-white hover:bg-slate-50 transition-colors shadow-sm text-slate-600">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center border border-slate-300 rounded bg-white hover:bg-slate-50 transition-colors shadow-sm text-slate-600">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-white border-b border-win-border">
+<tr>
+<th class="px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Date / Time</th>
+<th class="px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Patient</th>
+<th class="px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Trigger</th>
+<th class="px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Action Taken</th>
+<th class="px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Outcome</th>
+<th class="px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider text-right">Provider</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-win-border">
+<tr class="hover:bg-slate-50 transition-colors group cursor-default">
+<td class="px-4 py-3 align-top">
+<div class="text-[13px] text-slate-800">Oct 24, 08:15</div>
+<div class="text-[11px] text-slate-400">12 hours ago</div>
+</td>
+<td class="px-4 py-3 align-top">
+<div class="text-[13px] font-medium text-slate-800">Elena Rossi</div>
+<div class="text-[11px] text-slate-400">#ER-1992</div>
+</td>
+<td class="px-4 py-3 align-top">
+<span class="inline-block px-1.5 py-0.5 bg-red-100 border border-red-200 text-red-800 text-[10px] font-semibold rounded">GLUCOSE CRITICAL</span>
+</td>
+<td class="px-4 py-3 align-top">
+<div class="text-[13px] text-slate-700">Administered 2 units Insulin Aspart</div>
+</td>
+<td class="px-4 py-3 align-top">
+<div class="flex items-center gap-1.5 text-slate-700">
+<span class="material-symbols-outlined text-[14px] text-green-600">check_circle</span>
+<span class="text-[13px]">Stabilized</span>
+</div>
+</td>
+<td class="px-4 py-3 align-top text-right">
+<div class="text-[13px] text-slate-600">Dr. Miller</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group cursor-default">
+<td class="px-4 py-3 align-top">
+<div class="text-[13px] text-slate-800">Oct 23, 22:40</div>
+<div class="text-[11px] text-slate-400">22 hours ago</div>
+</td>
+<td class="px-4 py-3 align-top">
+<div class="text-[13px] font-medium text-slate-800">James Chen</div>
+<div class="text-[11px] text-slate-400">#JC-5541</div>
+</td>
+<td class="px-4 py-3 align-top">
+<span class="inline-block px-1.5 py-0.5 bg-orange-100 border border-orange-200 text-orange-800 text-[10px] font-semibold rounded">RESPIRATORY DROP</span>
+</td>
+<td class="px-4 py-3 align-top">
+<div class="text-[13px] text-slate-700">Increased O2 flow rate to 4L/min</div>
+</td>
+<td class="px-4 py-3 align-top">
+<div class="flex items-center gap-1.5 text-slate-700">
+<span class="material-symbols-outlined text-[14px] text-green-600">check_circle</span>
+<span class="text-[13px]">Recovered</span>
+</div>
+</td>
+<td class="px-4 py-3 align-top text-right">
+<div class="text-[13px] text-slate-600">Nurse Watkins</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group cursor-default">
+<td class="px-4 py-3 align-top">
+<div class="text-[13px] text-slate-800">Oct 23, 15:10</div>
+<div class="text-[11px] text-slate-400">Yesterday</div>
+</td>
+<td class="px-4 py-3 align-top">
+<div class="text-[13px] font-medium text-slate-800">Sarah Jenkins</div>
+<div class="text-[11px] text-slate-400">#SJ-9002</div>
+</td>
+<td class="px-4 py-3 align-top">
+<span class="inline-block px-1.5 py-0.5 bg-blue-100 border border-blue-200 text-blue-800 text-[10px] font-semibold rounded">POST-OP TEMP</span>
+</td>
+<td class="px-4 py-3 align-top">
+<div class="text-[13px] text-slate-700">Ordered culture &amp; broad-spectrum ABX</div>
+</td>
+<td class="px-4 py-3 align-top">
+<div class="flex items-center gap-1.5 text-slate-500">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="text-[13px]">Pending Labs</span>
+</div>
+</td>
+<td class="px-4 py-3 align-top text-right">
+<div class="text-[13px] text-slate-600">Dr. Miller</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Secondary Alert Cards -->
+<div class="col-span-12 lg:col-span-6 bg-white border border-win-border rounded shadow-sm p-5 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-[18px]">ecg</span>
+</div>
+<h4 class="font-semibold text-slate-900 text-sm">Arrythmia Warning</h4>
+</div>
+<span class="text-[11px] font-mono text-slate-500">15 min ago</span>
+</div>
+<p class="text-[13px] text-slate-600 mb-4 flex-1">Patient: <strong class="text-slate-800">Linda Gao</strong> (#LG-0012)</p>
+<div class="bg-win-bg p-3 border border-win-border rounded mb-4">
+<p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1">Recommendation</p>
+<p class="text-[13px] text-slate-800">Schedule follow-up call to assess new symptom onset (palpitations).</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary text-white px-4 py-1.5 rounded shadow-sm hover:bg-primary/90 transition-colors text-xs font-medium">Schedule Now</button>
+<button class="bg-white border border-slate-300 text-slate-700 px-4 py-1.5 rounded shadow-sm hover:bg-slate-50 transition-colors text-xs font-medium">View Data</button>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-6 bg-white border border-win-border rounded shadow-sm p-5 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-[18px]">medication</span>
+</div>
+<h4 class="font-semibold text-slate-900 text-sm">Compliance Alert</h4>
+</div>
+<span class="text-[11px] font-mono text-slate-500">42 min ago</span>
+</div>
+<p class="text-[13px] text-slate-600 mb-4 flex-1">Patient: <strong class="text-slate-800">Robert Dale</strong> (#RD-3381)</p>
+<div class="bg-win-bg p-3 border border-win-border rounded mb-4">
+<p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1">Recommendation</p>
+<p class="text-[13px] text-slate-800">Prescribe automated pill-dispenser for Warfarin adherence support.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary text-white px-4 py-1.5 rounded shadow-sm hover:bg-primary/90 transition-colors text-xs font-medium">E-Prescribe</button>
+<button class="bg-white border border-slate-300 text-slate-700 px-4 py-1.5 rounded shadow-sm hover:bg-slate-50 transition-colors text-xs font-medium">View History</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>
